@@ -66,5 +66,5 @@ class LoginForm(AuthenticationForm):
         self.fields['password'].widget.attrs['class'] = 'form-control'
 
 class FindForm(forms.Form):
-    find = forms.CharField(label="検索", required=False, \
+    find = forms.CharField(label="ブランド名、服の名前で検索:", required=False, \
         widget=forms.TextInput(attrs={'class':'form-control'}))
