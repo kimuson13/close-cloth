@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from .models import Post, Wanted
-from . forms import UserCreateForm, PostForm, WantedForm, LoginForm
+from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, FindForm
 
 
 # Create your views here.

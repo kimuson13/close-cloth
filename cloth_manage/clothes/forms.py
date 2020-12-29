@@ -64,3 +64,7 @@ class LoginForm(AuthenticationForm):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['class'] = 'form-control'
+
+class FindForm(forms.Form):
+    find = forms.CharField(label="検索", required=False, \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
