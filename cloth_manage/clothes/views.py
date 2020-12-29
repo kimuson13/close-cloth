@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
+from django.db.models import Q
 from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, FindForm
 
@@ -106,6 +107,25 @@ def delete(request, num):
         'obj': post,
     }
     return render(request, 'clothes/index/top/delete.html', params)
+
+def find(request):
+    if request.method == 'POST':
+        form = FindForm(request.POST)
+        find = request.POST['find']
+        data = Post.objects.filter(Q(cloth_name__contains=find)|Q(brand_name___contains=find))
+        msg = 'search result:'
+    else:
+        msg = 'search words'
+        form = PostForm()
+        data = None
+    params = {
+        'title': 'Search Something',
+        'message': msg,
+        'form': form,
+        'data': data,
+    }
+    return render(request, 'clothes/index/top/search.html', params)
+        
 
 
 
