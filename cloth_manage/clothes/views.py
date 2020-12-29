@@ -38,6 +38,12 @@ class Account_Login(LoginView):
         return render(request, 'signin.html', {'form': form,})
 account_login = Account_Login.as_view()
 
+def index(request):
+    params ={
+        'title':'Welcome to Close Cloth!!'
+    }
+    return render(request, 'index.html', params)
+
 def post(request):
     params = {
         'title': 'Post new cloth',
