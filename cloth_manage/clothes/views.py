@@ -108,7 +108,7 @@ def delete(request, num):
     }
     return render(request, 'clothes/index/top/delete.html', params)
 
-def find(request):
+def search(request):
     if request.method == 'POST':
         form = FindForm(request.POST)
         find = request.POST['find']
@@ -125,7 +125,24 @@ def find(request):
         'data': data,
     }
     return render(request, 'clothes/index/top/search.html', params)
-        
+
+def wishlist_add(request):
+    params = {
+        'title': 'Add wishlist',
+        'form': WantedForm(),
+    }
+    if request.method == 'POST':
+        name = request.POST['wanted_cloth_name']
+        brand_name = request.POST['wanted_brand_name']
+        season = request.POST['wanted_season']
+        price = request.POST['wanted_price']
+        priority = request.POST['priority']
+        images = request.POST['wanted_images']
+        wanted = Wanted(wanted_cloth_name=name, wanted_brand_name=brand_name, wanted_season=season, \
+            wanted_price=price, priority=priority, wanted_images=images)
+        wanted.save()
+        return redirect(to='/wishlist')
+    return render(request, 'clothes/index/top/wishlist/wishlist_add', params)
 
 
 
