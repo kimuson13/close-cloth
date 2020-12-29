@@ -42,7 +42,15 @@ def index(request):
     params ={
         'title':'Welcome to Close Cloth!!'
     }
-    return render(request, 'index.html', params)
+    return render(request, 'clothes/index.html', params)
+
+def top(request):
+    data = Post.objects.all()
+    params = {
+        'title': 'all cloth',
+        'data': data,
+    }
+    return render(request, 'clothes/index/top.html')
 
 def post(request):
     params = {
@@ -64,7 +72,7 @@ def post(request):
             material=material, price=price, buying_place=buying_place, post_images=post_images)
         post.save()
         return redirect(to='/top')
-    return render(request, 'index/top.html', params)
+    return render(request, 'clothes/index/top.html', params)
 
 
 
