@@ -82,5 +82,17 @@ def post(request):
         return redirect(to='/top')
     return render(request, 'clothes/index/top.html', params)
 
+def edit(request, num):
+    obj = Post.objects.get(id=num)
+    if request.method == 'POST':
+        post = PostForm(request.POST, instance=obj)
+        post.save()
+        return redirect(to='/top')
+    params = {
+        'title': 'Edit',
+        'id': num,
+        'form': PostForm(instance=obj),
+    }
+    return render(request, 'clothes/index/top/edit.html', params)
 
 
