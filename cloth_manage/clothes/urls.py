@@ -10,6 +10,7 @@ urlpatterns = [
     path('post', views.post, name='post'),
     path('edit/<int:num>', views.edit, name='edit'),
     path('delete/<int:num>', views.delete, name='delete'),
+    path('search', views.search, name='search'),
     path('wishlist', views.wishlist, name='wishlist'),
     path('logout', views.logout, {'template_name': 'index.html'}, name='logout'),
 ]
