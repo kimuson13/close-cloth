@@ -26,7 +26,7 @@ PRIORITY_CHOICES = [
     ('five', 'Priority_5')
 ]
 
-class UserCreatForm(UserCreationForm):
+class UserCreateForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
@@ -39,7 +39,7 @@ class UserCreatForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('owner', 'cloth_name', 'item_info', 'brand_nama', 'season', 'cloth_size', 'material', 'price', 'buying_place', 'buying_date', 'post_images')
+        fields = ('owner', 'cloth_name', 'item_info', 'brand_name', 'season', 'cloth_size', 'material', 'price', 'buying_place', 'buying_date', 'post_images')
         widgets = {
             'item_info': forms.ChoiceField(choices=ITEM_CHOICES),
             'buying_date': datetimepicker.DatePickerInput(

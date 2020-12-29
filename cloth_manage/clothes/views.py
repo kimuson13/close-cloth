@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
+from django.contrib.auth.views import LoginView
+from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm
 
 
@@ -22,17 +24,41 @@ class Create_account(CreateView):
         return render(request, 'signup.html', {'form':form,})
 create_account = Create_account.as_view()
 
-class Account_Login(View):
+class Account_Login(LoginView):
     def post(self, request, *args, **kwargs):
         form = LoginForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             user = User.objects.get(username=username)
             login(request, user)
-            return redirect(to='/top/')
+            return redirect(to='/top')
         return render(request, 'signin.html', {'form': form,})
     def get(self, request, *arg, **kwargs):
         form = LoginForm(request.POST)
         return render(request, 'signin.html', {'form': form,})
 account_login = Account_Login.as_view()
+
+def post(request):
+    params = {
+        'title': 'Post new cloth',
+        'form': PostForm(), 
+    }
+    if request.method == 'POST':
+        name = request.POST['cloth_name']
+        info = request.POST['cloth_info']
+        brand_name = request.POST['brand_name']
+        season = request.POST['season']
+        cloth_size = request.POST['cloth_size']
+        material = request.POST['material']
+        price = request.POST['price']
+        buying_place = request.POST['buying_place']
+        buying_date = request.POST['buying_date']
+        post_images = request.POST['post_images']
+        post = Post(cloth_name=name, cloth_info=info, brand_name=brand_name, season=season, cloth_size=cloth_size,\
+            material=material, price=price, buying_place=buying_place, post_images=post_images)
+        post.save()
+        return redirect(to='/top')
+    return render(request, 'index/top.html', params)
+
+
 

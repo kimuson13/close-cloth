@@ -26,7 +26,7 @@ class Post(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_owner')
     cloth_name = models.CharField(max_length=40)
     item_info = models.IntegerField(choices=ITEM_CHOICES)
-    brand_nama = models.CharField(max_length=40)
+    brand_name = models.CharField(max_length=40)
     season = models.CharField(max_length=7)
     cloth_size = models.CharField(max_length=8)
     material = models.CharField(max_length=40)
@@ -44,7 +44,7 @@ class Post(models.Model):
 class Wanted(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='want_owner')
     wanted_cloth_name = models.CharField(max_length=40)
-    wanted_brand_nama = models.CharField(max_length=40)
+    wanted_brand_name = models.CharField(max_length=40)
     wanted_season = models.CharField(max_length=7)
     wanted_price = models.PositiveIntegerField()
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
