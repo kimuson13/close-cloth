@@ -95,4 +95,17 @@ def edit(request, num):
     }
     return render(request, 'clothes/index/top/edit.html', params)
 
+def delete(request, num):
+    post = Post.objects.get(id=num)
+    if request.method == 'POST':
+        post.delete()
+        return redirect(to='/top')
+    params = {
+        'title': 'Delete',
+        'id': num,
+        'obj': post,
+    }
+    return render(request, 'clothes/index/top/delete.html', params)
+
+
 
