@@ -45,12 +45,20 @@ def index(request):
     return render(request, 'clothes/index.html', params)
 
 def top(request):
-    data = Post.objects.all()
+    data = Post.objects.order_by('buying_date').first()
     params = {
         'title': 'all cloth',
         'data': data,
     }
     return render(request, 'clothes/index/top.html')
+
+def detail(request):
+    data = Post.objects.all()
+    params = {
+        'title': 'cloth detail',
+        'data': data,
+    }
+    return render(request, 'clothes/index/detail.html')
 
 def post(request):
     params = {
