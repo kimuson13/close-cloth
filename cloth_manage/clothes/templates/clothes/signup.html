@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Sign up</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body class="container">
+        <h1 class="display-3">新規登録</h1>
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            <label>ユーザー名</label>
+            {{ form.username }}
+            {{ form.username.errors}}
+            <label>パスワード</label>
+            {{ form.password1 }}
+            {{ form.password1.eroors }}
+            <label>パスワード(確認)</label>
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+            <button type="submit">登録</button>
+        </form>
+    </body>
+</html>
