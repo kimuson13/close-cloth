@@ -163,6 +163,18 @@ def wishlist_edit(request, num):
         'id': num,
         'form': WantedForm(instance=obj)
     }
-    return render(request, 'clothes/index/top/wishlist/wishlist_edit.html')
+    return render(request, 'clothes/index/top/wishlist/wishlist_edit.html', params)
+
+def wishlist_delete(request, num):
+    wanted = Wanted.objects.get(id=num)
+    if request.method == 'POST':
+        wanted.delete()
+        return redirect(to='/wishlist')
+    params = {
+        'title': 'wishlist_delete',
+        'id': num,
+        'obj': wanted
+    }
+    return render(request, 'clothes/index/top/wishlist/wishlist_delete.html', params)
 
 
