@@ -150,7 +150,19 @@ def wishlist_add(request):
             wanted_price=price, priority=priority, wanted_images=images)
         wanted.save()
         return redirect(to='/wishlist')
-    return render(request, 'clothes/index/top/wishlist/wishlist_add', params)
+    return render(request, 'clothes/index/top/wishlist/wishlist_add.html', params)
 
+def wishlist_edit(request, num):
+    obj = Wanted.objects.get(id=num)
+    if request.method == 'POST':
+        wanted = WantedForm(request.POST, instance=obj)
+        wanted.save()
+        return redirect(to='/wishlist')
+    params = {
+        'title': 'wishlist_edit',
+        'id': num,
+        'form': WantedForm(instance=obj)
+    }
+    return render(request, 'clothes/index/top/wishlist/wishlist_edit.html')
 
 
