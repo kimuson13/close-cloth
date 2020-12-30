@@ -1,0 +1,36 @@
+{% extends 'clothes/layout.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block header %}
+<h1 class="display-2 text-primary align-baseline">Close Cloth TOP</h1>
+<a class="btn btn-primary" href="{% url 'post' %}">新しい服を追加する</a>
+<h1 class="display-4 text-primary">服の一覧</h1>
+{% for item in data %}
+<table class="table-primary">
+    <thead class="thead-dark">
+        <tr>
+            <th>{{item.brand_name}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="table-info">{{item.itme_info}}</th>
+        </tr>
+        <tr>
+            <td>{{item.images}}</td>
+        </tr>
+        <tr>
+            <a href="{% url 'detail' %}"></a>
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
+<p>服の合計金額：{{sum_price}}</p>
+<br>
+<h1 class="h4">絞り込みはこちらから</h1>
+<a class="btn btn-success" href="{% url 'search' %}">絞り込み</a>
+<br>
+<h1 class="h4">WishListはこちらから</h1>
+<a class="btn btn-primary" href="{% url 'wishlist' %}">WishList</a>
+{% endblock %}
