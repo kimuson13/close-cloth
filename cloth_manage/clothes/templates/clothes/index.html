@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -8,12 +9,12 @@
     <body class="container">
         <h1 class="display-2">Welcome to Close Cloth!!</h1>
         <div class="d-inline">
-            <h1 class="display-4">はじめての方はこちら</h1>
-            <a class="btn btn-info" href="clothes/signup.html">新規登録</a>
+            <h1 class="display-4">はじめての方はこちら!</h1>
+            <a class="btn btn-info" href="{% url 'signup' %}">新規登録</a>
         </div>
         <div class="d-inline">
-            <h1 class="display-4">ログインはこちら</h1>
-            <a class="btn btn-primary" href="clothes/signin.html">ログイン</a>
+            <h1 class="display-4">ログインはこちら!</h1>
+            <a class="btn btn-primary" href="{% url 'signin' %}">ログイン</a>
         </div>
     </body>
 </html>
