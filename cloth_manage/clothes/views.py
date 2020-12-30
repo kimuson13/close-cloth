@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.db.models import Q
@@ -23,7 +23,6 @@ class Create_account(CreateView):
     def get(self, request, *args, **kwargs):
         form = UserCreateForm(request.POST)
         return render(request, 'signup.html', {'form':form,})
-create_account = Create_account.as_view()
 
 class Account_Login(LoginView):
     def post(self, request, *args, **kwargs):
@@ -37,7 +36,9 @@ class Account_Login(LoginView):
     def get(self, request, *arg, **kwargs):
         form = LoginForm(request.POST)
         return render(request, 'signin.html', {'form': form,})
-account_login = Account_Login.as_view()
+
+def logout_view(request):
+    logout(request)
 
 def index(request):
     params ={
