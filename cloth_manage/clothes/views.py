@@ -53,6 +53,7 @@ def top(request):
     params = {
         'title': 'all cloth',
         'data': data,
+        'sum_price': sum(Post.objects.value_list('price'))
     }
     return render(request, 'clothes/index/top.html')
 
