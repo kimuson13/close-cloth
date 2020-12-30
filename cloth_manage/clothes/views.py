@@ -126,6 +126,14 @@ def search(request):
     }
     return render(request, 'clothes/index/top/search.html', params)
 
+def wishlist(request):
+    data = Wanted.objects.all()
+    params = {
+        'title': 'wishlist',
+        'data': data
+    }
+    return render(request, 'clothes/index/top/wishlist.html')
+
 def wishlist_add(request):
     params = {
         'title': 'Add wishlist',
