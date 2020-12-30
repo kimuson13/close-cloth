@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, FindForm
 
@@ -46,6 +47,7 @@ def index(request):
     }
     return render(request, 'clothes/index.html', params)
 
+@login_required(login_url='/signin/')
 def top(request):
     data = Post.objects.order_by('buying_date').first()
     params = {
@@ -54,6 +56,7 @@ def top(request):
     }
     return render(request, 'clothes/index/top.html')
 
+@login_required(login_url='/signin/')
 def detail(request):
     data = Post.objects.all()
     params = {
@@ -62,6 +65,7 @@ def detail(request):
     }
     return render(request, 'clothes/index/detail.html')
 
+@login_required(login_url='/signin/')
 def post(request):
     params = {
         'title': 'Post new cloth',
@@ -84,6 +88,7 @@ def post(request):
         return redirect(to='/top')
     return render(request, 'clothes/index/top.html', params)
 
+@login_required(login_url='/signin/')
 def edit(request, num):
     obj = Post.objects.get(id=num)
     if request.method == 'POST':
@@ -97,6 +102,7 @@ def edit(request, num):
     }
     return render(request, 'clothes/index/top/edit.html', params)
 
+@login_required(login_url='/signin/')
 def delete(request, num):
     post = Post.objects.get(id=num)
     if request.method == 'POST':
@@ -109,6 +115,7 @@ def delete(request, num):
     }
     return render(request, 'clothes/index/top/delete.html', params)
 
+@login_required(login_url='/signin/')
 def search(request):
     if request.method == 'POST':
         form = FindForm(request.POST)
@@ -127,6 +134,7 @@ def search(request):
     }
     return render(request, 'clothes/index/top/search.html', params)
 
+@login_required(login_url='/signin/')
 def wishlist(request):
     data = Wanted.objects.all()
     params = {
@@ -135,6 +143,7 @@ def wishlist(request):
     }
     return render(request, 'clothes/index/top/wishlist.html')
 
+@login_required(login_url='/signin/')
 def wishlist_add(request):
     params = {
         'title': 'Add wishlist',
@@ -153,6 +162,7 @@ def wishlist_add(request):
         return redirect(to='/wishlist')
     return render(request, 'clothes/index/top/wishlist/wishlist_add.html', params)
 
+@login_required(login_url='/signin/')
 def wishlist_edit(request, num):
     obj = Wanted.objects.get(id=num)
     if request.method == 'POST':
@@ -166,6 +176,7 @@ def wishlist_edit(request, num):
     }
     return render(request, 'clothes/index/top/wishlist/wishlist_edit.html', params)
 
+@login_required(login_url='/signin/')
 def wishlist_delete(request, num):
     wanted = Wanted.objects.get(id=num)
     if request.method == 'POST':
