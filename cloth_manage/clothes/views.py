@@ -57,11 +57,12 @@ def top(request):
     return render(request, 'clothes/index/top.html')
 
 @login_required(login_url='/signin/')
-def detail(request):
-    data = Post.objects.all()
+def detail(request, num):
+    data = Post.objects.get(id=num)
     params = {
         'title': 'cloth detail',
         'data': data,
+        'num': num,
     }
     return render(request, 'clothes/index/detail.html')
 
