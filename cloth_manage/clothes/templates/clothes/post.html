@@ -3,7 +3,13 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-2">新しい服を追加する</h1>
 {% endblock %}
 
 {% block content %}
+<form action="{% url 'post' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="click" class="btn btn-primary w-auto">
+</form>
 {% endblock %}
