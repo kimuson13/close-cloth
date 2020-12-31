@@ -7,13 +7,9 @@
 {% endblock %}
 
 {% block content %}
+<p>{{data.cloth_name}}</p>
+<img src="{{ MEDIA_URL }}{{data.post_images}}">
 <table class="table">
-    <tr>
-        <td>{{data.cloth_name}}</td>
-    </tr>
-    <tr>
-        <th>{{data.post_images}}</th>
-    </tr>
     <tr>
         <th>{{data.item_info}}</th>
     </tr>
@@ -28,9 +24,6 @@
     </tr>
     <tr>
         <th>{{data.material}}</th>
-    </tr>
-    <tr>
-        <th>{{data.}}</th>
     </tr>
     <tr>
         <th>{{data.price}}</th>
