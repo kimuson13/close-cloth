@@ -8,7 +8,6 @@
 
 {% block content %}
 <table class="table">
-    <thead>
         <tr>
             <td>{{data.cloth_name}}</td>
         </tr>
@@ -42,7 +41,6 @@
         <tr>
             <th>{{data.buying_date}}</th>
         </tr>
-    </thead>
 </table>
 <a class="btn btn-primary" href="{% url 'top' %}">back to TOP</a>
 {% endblock %}
