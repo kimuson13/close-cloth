@@ -144,7 +144,8 @@ def wishlist(request):
     data = Wanted.objects.all()
     params = {
         'title': 'wishlist',
-        'data': data
+        'data': data,
+        'sum_price':Wanted.objects.value_list('price')
     }
     return render(request, 'clothes/index/top/wishlist.html')
 
