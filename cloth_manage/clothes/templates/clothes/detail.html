@@ -7,13 +7,9 @@
 {% endblock %}
 
 {% block content %}
+<p>{{data.cloth_name}}</p>
+<img src="{{ MEDIA_URL }}{{data.images}}">
 <table class="table">
-        <tr>
-            <td>{{data.cloth_name}}</td>
-        </tr>
-        <tr>
-            <th>{{data.post_images}}</th>
-        </tr>
         <tr>
             <th>{{data.item_info}}</th>
         </tr>
@@ -40,6 +36,10 @@
         </tr>
         <tr>
             <th>{{data.buying_date}}</th>
+        </tr>
+        <tr>
+            <th><a href="{% url 'edit' data.id %}">編集</a></th>
+            <th><a href="{% url 'delete' data.id %}">削除</a></th>
         </tr>
 </table>
 <a class="btn btn-primary" href="{% url 'top' %}">back to TOP</a>
