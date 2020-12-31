@@ -3,7 +3,46 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-2 text-primary">{{data.cloth_name}}の詳細</h1>
 {% endblock %}
 
 {% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>{{data.cloth_name}}</td>
+        </tr>
+        <tr>
+            <th>{{data.post_images}}</th>
+        </tr>
+        <tr>
+            <th>{{data.item_info}}</th>
+        </tr>
+        <tr>
+            <th>{{data.brand_name}}</th>
+        </tr>
+        <tr>
+            <th>{{data.season}}</th>
+        </tr>
+        <tr>
+            <th>{{data.cloth_size}}</th>
+        </tr>
+        <tr>
+            <th>{{data.material}}</th>
+        </tr>
+        <tr>
+            <th>{{data.}}</th>
+        </tr>
+        <tr>
+            <th>{{data.price}}</th>
+        </tr>
+        <tr>
+            <th>{{data.buying_place}}</th>
+        </tr>
+        <tr>
+            <th>{{data.buying_date}}</th>
+        </tr>
+    </thead>
+</table>
+<a class="btn btn-primary" href="{% url 'top' %}">back to TOP</a>
 {% endblock %}
