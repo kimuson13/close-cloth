@@ -4,6 +4,9 @@
 
 {% block header %}
 <h1 class="display-2 text-primary align-baseline">Close Cloth TOP</h1>
+{% endblock %}
+
+{% block content %0}
 <a class="btn btn-primary" href="{% url 'post' %}">新しい服を追加する</a>
 <h1 class="display-4 text-primary">服の一覧</h1>
 {% for item in data %}
