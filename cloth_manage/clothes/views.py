@@ -102,7 +102,7 @@ def edit(request, num):
         'id': num,
         'form': PostForm(instance=obj),
     }
-    return render(request, 'clothes/index/top/edit.html', params)
+    return render(request, 'clothes/index/top/detail/edit.html', params)
 
 @login_required(login_url='/signin/')
 def delete(request, num):
@@ -115,7 +115,7 @@ def delete(request, num):
         'id': num,
         'obj': post,
     }
-    return render(request, 'clothes/index/top/delete.html', params)
+    return render(request, 'clothes/index/top/detail/delete.html', params)
 
 @login_required(login_url='/signin/')
 def search(request):
