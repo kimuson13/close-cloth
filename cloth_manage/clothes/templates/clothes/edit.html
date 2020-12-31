@@ -3,7 +3,19 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-2 text-primary">編集</h1>
 {% endblock %}
 
 {% block content %}
+<form action="{% url 'edit' %}" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <th><td>
+                <input type="submit" value="click" class="btn btn-primary w-auto">
+            </td></th>
+        </tr>
+    </table>
+</form>
 {% endblock %}
