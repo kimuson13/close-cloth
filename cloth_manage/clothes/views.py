@@ -122,19 +122,22 @@ def search(request):
     if request.method == 'POST':
         form = FindForm(request.POST)
         find = request.POST['find']
-        data = Post.objects.filter(Q(cloth_name__contains=find)|Q(brand_name___contains=find))
-        msg = 'search result:'
+        data = Post.objects.filter(brand_name__icontains=find)
+        msg = 'Result:' + str(data.count())
+        sum_price = sum(data.value_list('price'))
     else:
-        msg = 'search words'
-        form = PostForm()
-        data = None
+        msg = 'Search words...'
+        form = FindForm()
+        data = Post.objects.all()
+        sum_price = sum(data.value_list('price'))
     params = {
-        'title': 'Search Something',
+        'title':'Search some cloth',
         'message': msg,
         'form': form,
         'data': data,
+        'sum_price': sum_price,
     }
-    return render(request, 'clothes/index/top/search.html', params)
+    return render(request, 'clothes/top/search.html')
 
 @login_required(login_url='/signin/')
 def wishlist(request):
