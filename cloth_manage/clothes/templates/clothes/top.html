@@ -9,26 +9,16 @@
 {% block content %}
 <a class="btn btn-primary" href="{% url 'post' %}">新しい服を追加する</a>
 <h1 class="display-4 text-primary">服の一覧</h1>
-{% for item in data %}
 <table class="table-primary">
-    <thead class="thead-dark">
-        <tr>
-            <th>{{item.brand_name}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th class="table-info">{{item.itme_info}}</th>
-        </tr>
-        <tr>
-            <td>{{item.post_images}}</td>
-        </tr>
-        <tr>
-            <a href="{% url 'detail' %}">詳細</a>
-        </tr>
-    </tbody>
+    {% for item in data %}
+    <tr>
+        <td>{{item.cloth_name}}</td>
+    </tr>
+    <tr>
+        <img src="{{ MEDIA_URL }}{{data.wanted_images}}">
+    </tr>
+    {% endfor %}
 </table>
-{% endfor %}
 <p>服の合計金額：{{sum_price}}</p>
 <br>
 <h1 class="h4">絞り込み、検索はこちらから</h1>
