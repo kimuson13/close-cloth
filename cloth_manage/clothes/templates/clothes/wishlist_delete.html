@@ -3,7 +3,27 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-2 text-primary">{{obj.wanted_cloth_name}}の消去</h1>
 {% endblock %}
 
 {% block content %}
+<p>{{obj.wanted_cloth_name}}</p>
+<img src="{{ MEDIA_URL }}{{obj.wanted_images}}">
+<table class="table">
+    <tr>
+        <th>{{obj.wanted_brand_name}}</th>
+    </tr>
+    <tr>
+        <th>{{obj.wanted_season}}</th>
+    </tr>
+    <tr>
+        <th>{{obj.wanted_price}}</th>
+    </tr>
+    <form action="{% url 'delete' id %}" method="POST">
+        {% csrf_token %}
+        <tr><th></th><td>
+            <input type="submit" value="delete" class="btn btn-danger">
+        </td></tr>
+    </form>
+</table>
 {% endblock %}
