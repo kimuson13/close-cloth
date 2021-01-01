@@ -10,13 +10,22 @@
 <a class="btn btn-primary" href="{% url 'post' %}">新しい服を追加する</a>
 <h1 class="display-4 text-primary">服の一覧</h1>
 <table class="table-primary">
+    <tr>
+        <th>名称</th>
+        <th>写真</th>
+        <th>種類</th>
+        <th>ブランド名</th>
+    </tr>
     {% for item in data %}
     <tr>
         <td>{{item.cloth_name}}</td>
-    </tr>
-    <tr>
         <img src="{{ MEDIA_URL }}{{data.wanted_images}}">
+        <td>{{item.item_info}}</td>
+        <td>{{item.brand_name}}</td>`
     </tr>
+    <tr><th><td>
+        <a href="{% url 'detail' item.id %}"></a>
+    </td></th></tr>
     {% endfor %}
 </table>
 <p>服の合計金額：{{sum_price}}</p>
