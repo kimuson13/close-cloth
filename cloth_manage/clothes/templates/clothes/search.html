@@ -3,7 +3,45 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-2 text-primary">絞り込み、検索</h1>
 {% endblock %}
 
 {% block content %}
+<form action="{% url 'search' %}" mwthod="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <tr><th></th><td>
+        <input type="submit" value="click" class="btn btn-primary w-auto">
+    </td></tr>
+</form>
+{% for item in data %}
+<p>{{item.cloth_name}}</p>
+<img src="{{ MEDIA_URL }}{{item.post_images}}">
+<table class="table">
+    <tr>
+        <th>{{item.item_info}}</th>
+    </tr>
+    <tr>
+        <th>{{item.brand_name}}</th>
+    </tr>
+    <tr>
+        <th>{{item.season}}</th>
+    </tr>
+    <tr>
+        <th>{{item.cloth_size}}</th>
+    </tr>
+    <tr>
+        <th>{{item.material}}</th>
+    </tr>
+    <tr>
+        <th>{{item.price}}</th>
+    </tr>
+    <tr>
+        <th>{{item.buying_place}}</th>
+    </tr>
+    <tr>
+        <th>{{item.buying_date}}</th>
+    </tr>
+</table>
+{% endfor %}
 {% endblock %}
