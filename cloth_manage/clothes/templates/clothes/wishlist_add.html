@@ -3,7 +3,13 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-2 text-primary">WishtListの追加</h1>
 {% endblock %}
 
 {% block content %}
+<form action="{% url 'wishlist_add' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" vlaue="追加する" class="btn btn-primary">
+</form>
 {% endblock %}
