@@ -3,36 +3,36 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary">{{data.cloth_name}}の消去</h1>
+<h1 class="display-2 text-primary">{{obj.cloth_name}}の消去</h1>
 {% endblock %}
 
 {% block content %}
-<p>{{data.cloth_name}}</p>
-<img src="{{ MEDIA_URL }}{{data.post_images}}">
+<p>{{obj.cloth_name}}</p>
+<img src="{{ MEDIA_URL }}{{obj.post_images}}">
 <table class="table">
     <tr>
-        <th>{{data.item_info}}</th>
+        <th>{{obj.item_info}}</th>
     </tr>
     <tr>
-        <th>{{data.brand_name}}</th>
+        <th>{{obj.brand_name}}</th>
     </tr>
     <tr>
-        <th>{{data.season}}</th>
+        <th>{{obj.season}}</th>
     </tr>
     <tr>
-        <th>{{data.cloth_size}}</th>
+        <th>{{obj.cloth_size}}</th>
     </tr>
     <tr>
-        <th>{{data.material}}</th>
+        <th>{{obj.material}}</th>
     </tr>
     <tr>
-        <th>{{data.price}}</th>
+        <th>{{obj.price}}</th>
     </tr>
     <tr>
-        <th>{{data.buying_place}}</th>
+        <th>{{obj.buying_place}}</th>
     </tr>
     <tr>
-        <th>{{data.buying_date}}</th>
+        <th>{{obj.buying_date}}</th>
     </tr>
     <form action="{% url 'delete' id %}" method="POST">
         {% csrf_token %}
