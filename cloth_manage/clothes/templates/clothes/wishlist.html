@@ -3,7 +3,14 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
+<h1 class="display-3 text-primary">WishList</h1>
 {% endblock %}
 
 {% block content %}
+<p>WishListの追加はこちらから</p>
+<a href="{% url 'wishlist_add' %}">追加</a>
+<p>WishList一覧</p>
+{% for item in data}
+
+{% endfor %}
 {% endblock %}
