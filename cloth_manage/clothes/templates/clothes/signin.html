@@ -2,14 +2,14 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Sign up</title>
+        <title>Sign in</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body class="container">
         {% if form.errors %}
         <p>ユーザー名、パスワードが一致しません</p>
         {% endif %}
-        <form action="{% url 'signin' %}">
+        <form action="{% url 'signin' %}" method="POST">
             {% csrf_token %}
             <label>ユーザーID</label>
             {{ form.username }}
@@ -17,7 +17,8 @@
             <label>パスワード</label>
             {{ form.password }}
             {{ form.password.errors }}
-            <button class="btn btn-primary" type="submit">ログイン</button>
+            <br>
+            <input type="submit" class="btn btn-primary" value="ログイン">
         </form>
     </body>
 </html>

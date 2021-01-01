@@ -19,11 +19,11 @@ class Create_account(CreateView):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
-        return render(request, 'signup.html', {'form': form,})
+            return redirect('/clothes')
+        return render(request, 'clothes/signup.html', {'form': form,})
     def get(self, request, *args, **kwargs):
         form = UserCreateForm(request.POST)
-        return render(request, 'signup.html', {'form':form,})
+        return render(request, 'clothes/signup.html', {'form':form,})
 
 class Account_Login(LoginView):
     def post(self, request, *args, **kwargs):
@@ -32,11 +32,11 @@ class Account_Login(LoginView):
             username = form.cleaned_data.get('username')
             user = User.objects.get(username=username)
             login(request, user)
-            return redirect(to='/top')
-        return render(request, 'signin.html', {'form': form,})
+            return redirect(to='/clothes/top')
+        return render(request, 'clothes/signin.html', {'form': form,})
     def get(self, request, *arg, **kwargs):
         form = LoginForm(request.POST)
-        return render(request, 'signin.html', {'form': form,})
+        return render(request, 'clothes/signin.html', {'form': form,})
 
 def logout_view(request):
     logout(request)
@@ -55,7 +55,7 @@ def top(request):
         'data': data,
         'sum_price': sum(Post.objects.value_list('price'))
     }
-    return render(request, 'clothes/index/top.html')
+    return render(request, 'clothes/top.html')
 
 @login_required(login_url='/signin/')
 def detail(request, num):
