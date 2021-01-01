@@ -50,12 +50,13 @@ def index(request):
 @login_required(login_url='/signin/')
 def top(request):
     data = Post.objects.order_by('buying_date').first()
+    sum_price = Post.objects.values_list('price', flat=True)
     params = {
         'title': 'all cloth',
         'data': data,
-        'sum_price': sum(Post.objects.value_list('price'))
+        'sum_price': sum(sum_price)
     }
-    return render(request, 'clothes/top.html')
+    return render(request, 'clothes/top.html', params)
 
 @login_required(login_url='/signin/')
 def detail(request, num):
