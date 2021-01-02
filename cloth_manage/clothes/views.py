@@ -51,10 +51,12 @@ def index(request):
 def top(request):
     data = Post.objects.order_by('buying_date').first()
     sum_price = Post.objects.values_list('price', flat=True)
+    user = request.user
     params = {
         'title': 'all cloth',
         'data': data,
-        'sum_price': sum(sum_price)
+        'sum_price': sum(sum_price),
+        'login_user': user,
     }
     return render(request, 'clothes/top.html', params)
 

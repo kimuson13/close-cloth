@@ -26,7 +26,7 @@
                     <a class="nab-link" href="{% url 'wishlist'}">WishList</a>
                 </li>
             </ul>
-            <span>Logined: <span class="h6">{{username}}.</span></span>
+            <span>Logined: <span class="h6">{{login_user}}.</span></span>
         </nav>
         <div>
             {% block header %}{% endblock %}
@@ -37,7 +37,7 @@
         <hr>
         <div class="my-3">
             <span class="font-weight-bold">
-                <a href="clothes/logout?next=/clothes/">[ logout ]</a>
+                <a href="/logout?next=/clothes/">[ logout ]</a>
             </span>
         </div>
     </body>
