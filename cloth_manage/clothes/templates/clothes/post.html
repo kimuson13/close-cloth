@@ -10,6 +10,6 @@
 <form action="{% url 'post' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="click" class="btn btn-primary w-auto">
+    <input type="submit" value="Add" class="btn btn-primary w-auto">
 </form>
 {% endblock %}
