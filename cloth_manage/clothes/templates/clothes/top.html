@@ -12,14 +12,12 @@
 <table class="table-primary">
     <tr>
         <th>名称</th>
-        <th>写真</th>
         <th>種類</th>
         <th>ブランド名</th>
     </tr>
     {% for item in data %}
     <tr>
         <td>{{item.cloth_name}}</td>
-        <img src="{{ MEDIA_URL }}{{data.wanted_images}}">
         <td>{{item.item_info}}</td>
         <td>{{item.brand_name}}</td>`
     </tr>

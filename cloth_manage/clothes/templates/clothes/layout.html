@@ -23,10 +23,10 @@
                     <a class="nab-link" href="{% url 'search'}">Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nab-link" href="{% url 'wishlist'}">WiahList</a>
+                    <a class="nab-link" href="{% url 'wishlist'}">WishList</a>
                 </li>
             </ul>
-            <span>Logined: <span class="h6">{{login_user}}.</span></span>
+            <span>Logined: <span class="h6">{{username}}.</span></span>
         </nav>
         <div>
             {% block header %}{% endblock %}
