@@ -14,6 +14,7 @@
         <th>名称</th>
         <th>種類</th>
         <th>ブランド名</th>
+        <th>値段</th>
     </tr>
     {% for item in data %}
     <tr>
@@ -21,6 +22,7 @@
         <td>{{item.cloth_name}}</td>
         <td>{{item.get_item_info_display}}</td>
         <td>{{item.brand_name}}</td>
+        <td>{{item.price}}</td>
         {% endif %}
     </tr>
     {% endfor %}

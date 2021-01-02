@@ -51,7 +51,7 @@ def index(request):
 def top(request):
     data = Post.objects.order_by('buying_date')
     user = request.user
-    price = Post.objects.value_list('price', flat=True)
+    price = Post.objects.filter(owner=user).values_list('price', flat=True)
     sum_price = sum(price)
     params = {
         'title': 'all cloth',
