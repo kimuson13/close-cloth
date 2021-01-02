@@ -9,7 +9,7 @@
 {% block content %}
 <a class="btn btn-primary" href="{% url 'post' %}">新しい服を追加する</a>
 <h1 class="display-4 text-primary">服の一覧</h1>
-<table class="table-primary">
+<table class="table">
     <tr>
         <th>名称</th>
         <th>種類</th>
@@ -18,12 +18,9 @@
     {% for item in data %}
     <tr>
         <td>{{item.cloth_name}}</td>
-        <td>{{item.item_info}}</td>
-        <td>{{item.brand_name}}</td>`
+        <td>{{item.get_item_info_display}}</td>
+        <td>{{item.brand_name}}</td>
     </tr>
-    <tr><th><td>
-        <a href="{% url 'detail' %}">detail</a>
-    </td></th></tr>
     {% endfor %}
 </table>
 <p>服の合計金額：{{sum_price}}</p>
@@ -32,5 +29,5 @@
 <a class="btn btn-success" href="{% url 'search' %}">絞り込み、検索</a>
 <br>
 <h1 class="h4">WishListはこちらから</h1>
-<a class="btn btn-primary" href="{% url 'wishlist' %}">WishList</a>
+<a class="btn btn-info" href="{% url 'wishlist' %}">WishList</a>
 {% endblock %}

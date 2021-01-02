@@ -49,8 +49,7 @@ def index(request):
 
 @login_required(login_url='/signin/')
 def top(request):
-    data = Post.objects.order_by('buying_date').first()
-    data = str(data)
+    data = Post.objects.order_by('buying_date')
     price = Post.objects.values_list('price', flat=True)
     sum_price = sum(price)
     user = request.user
@@ -73,7 +72,7 @@ def detail(request, num):
         'login_user': user,
         
     }
-    return render(request, 'clothes/index/detail.html')
+    return render(request, 'clothes/detail.html')
 
 @login_required(login_url='/signin/')
 def post(request):
