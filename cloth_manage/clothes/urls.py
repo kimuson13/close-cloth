@@ -16,5 +16,5 @@ urlpatterns = [
     path('wishlist_add', views.wishlist_add, name='wishlist_add'),
     path('wishlist_edit/<int:num>', views.wishlist_edit, name='wishlist_edit'),
     path('wishlist_delete/<int:num>', views.wishlist_delete, name='wishlist_delete'),
-    path('logout', views.logout_view, {'template_name': 'index.html'}, name='logout'),
+    path('logout', views.LogoutView.as_view(), name='logout'),
 ]
