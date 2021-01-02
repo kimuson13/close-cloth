@@ -50,12 +50,14 @@ def index(request):
 @login_required(login_url='/signin/')
 def top(request):
     data = Post.objects.order_by('buying_date').first()
-    sum_price = Post.objects.values_list('price', flat=True)
+    data = str(data)
+    price = Post.objects.values_list('price', flat=True)
+    sum_price = sum(price)
     user = request.user
     params = {
         'title': 'all cloth',
         'data': data,
-        'sum_price': sum(sum_price),
+        'sum_price': sum_price,
         'login_user': user,
     }
     return render(request, 'clothes/top.html', params)
@@ -82,8 +84,9 @@ def post(request):
         'login_user': user,
     }
     if request.method == 'POST':
+        owner = user
         name = request.POST['cloth_name']
-        info = request.POST['cloth_info']
+        info = request.POST['item_info']
         brand_name = request.POST['brand_name']
         season = request.POST['season']
         cloth_size = request.POST['cloth_size']
@@ -92,10 +95,10 @@ def post(request):
         buying_place = request.POST['buying_place']
         buying_date = request.POST['buying_date']
         post_images = request.POST['post_images']
-        post = Post(cloth_name=name, cloth_info=info, brand_name=brand_name, season=season, cloth_size=cloth_size,\
+        post = Post(owner=owner,cloth_name=name, item_info=info, brand_name=brand_name, season=season, cloth_size=cloth_size,\
             material=material, price=price, buying_place=buying_place, post_images=post_images)
         post.save()
-        return redirect(to='/top')
+        return redirect(to='/clothes/top')
     return render(request, 'clothes/post.html', params)
 
 @login_required(login_url='/signin/')

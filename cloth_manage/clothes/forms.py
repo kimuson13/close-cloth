@@ -18,14 +18,6 @@ ITEM_CHOICES = [
     (10, 'Others')
 ]
 
-PRIORITY_CHOICES = [
-    ('one', 'Priority_1'),
-    ('two', 'Priority_2'),
-    ('three', 'Priority_3'),
-    ('four', 'Priority_4'),
-    ('five', 'Priority_5')
-]
-
 class UserCreateForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -39,7 +31,7 @@ class UserCreateForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('owner', 'cloth_name', 'item_info', 'brand_name', 'season', 'cloth_size', 'material', 'price', 'buying_place', 'buying_date', 'post_images')
+        fields = ('cloth_name', 'item_info', 'brand_name', 'season', 'cloth_size', 'material', 'price', 'buying_place', 'buying_date', 'post_images')
         widgets = {
             'buying_date': datetimepicker.DatePickerInput(
                 format='%Y-%m-%d',
@@ -54,9 +46,6 @@ class WantedForm(forms.ModelForm):
     class Meta:
         model = Wanted
         fields = ('owner', 'wanted_cloth_name', 'wanted_brand_name', 'wanted_season', 'wanted_price', 'priority', 'wanted_images')
-        widgets = {
-            'priority': forms.ChoiceField(choices=PRIORITY_CHOICES)
-        }
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
