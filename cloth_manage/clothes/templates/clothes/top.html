@@ -23,6 +23,7 @@
         <td>{{item.get_item_info_display}}</td>
         <td>{{item.brand_name}}</td>
         <td>{{item.price}}</td>
+        <td><a class="btn btn-secondary" href="{% url 'detail' item.id %}">detail</a></td>
         {% endif %}
     </tr>
     {% endfor %}

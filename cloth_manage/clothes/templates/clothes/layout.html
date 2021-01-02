@@ -4,7 +4,6 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title%}{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'clothes/css/style.css' %}" type="text/css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -17,13 +16,13 @@
                     <a class="nav-link" href="{% url 'top' %}">TOP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nab-link" href="{% url 'post'}">Add Cloth</a>
+                    <a class="nab-link btn btn-primary" href="{% url 'post'}">Add Cloth</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nab-link" href="{% url 'search'}">Search</a>
+                    <a class="nab-link btn btn-success" href="{% url 'search'}">Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nab-link" href="{% url 'wishlist'}">WishList</a>
+                    <a class="nab-link btn btn-info" href="{% url 'wishlist'}">WishList</a>
                 </li>
             </ul>
             <span>Logined: <span class="h6">{{login_user}}.</span></span>

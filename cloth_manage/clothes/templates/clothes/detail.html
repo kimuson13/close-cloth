@@ -7,32 +7,31 @@
 {% endblock %}
 
 {% block content %}
-<p>{{data.cloth_name}}</p>
-<img src="{{ MEDIA_URL }}{{data.post_images}}">
+<img src="{{ data.post_images.url }}">
 <table class="table">
         <tr>
-            <th>{{data.item_info}}</th>
+            <th>種類：{{data.get_item_info_display}}</th>
         </tr>
         <tr>
-            <th>{{data.brand_name}}</th>
+            <th>ブランド名：{{data.brand_name}}</th>
         </tr>
         <tr>
-            <th>{{data.season}}</th>
+            <th>シーズン：{{data.season}}</th>
         </tr>
         <tr>
-            <th>{{data.cloth_size}}</th>
+            <th>サイズ：{{data.cloth_size}}</th>
         </tr>
         <tr>
-            <th>{{data.material}}</th>
+            <th>素材：{{data.material}}</th>
         </tr>
         <tr>
-            <th>{{data.price}}</th>
+            <th>値段：{{data.price}}</th>
         </tr>
         <tr>
-            <th>{{data.buying_place}}</th>
+            <th>購入場所：{{data.buying_place}}</th>
         </tr>
         <tr>
-            <th>{{data.buying_date}}</th>
+            <th>購入日時：{{data.buying_date}}</th>
         </tr>
         <tr>
             <th><a href="{% url 'edit' data.id %}">編集</a></th>

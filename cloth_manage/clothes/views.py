@@ -63,8 +63,8 @@ def top(request):
 
 @login_required(login_url='/signin/')
 def detail(request, num):
-    data = Post.objects.get(id=num)
     user = request.user
+    data = Post.objects.filter(owner=user).get(id=num)
     params = {
         'title': 'cloth detail',
         'data': data,
@@ -72,7 +72,7 @@ def detail(request, num):
         'login_user': user,
         
     }
-    return render(request, 'clothes/detail.html')
+    return render(request, 'clothes/detail.html', params)
 
 @login_required(login_url='/signin/')
 def post(request):
