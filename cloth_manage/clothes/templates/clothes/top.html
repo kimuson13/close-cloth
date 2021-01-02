@@ -17,9 +17,11 @@
     </tr>
     {% for item in data %}
     <tr>
+        {% if login_user == item.owner %}
         <td>{{item.cloth_name}}</td>
         <td>{{item.get_item_info_display}}</td>
         <td>{{item.brand_name}}</td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table>

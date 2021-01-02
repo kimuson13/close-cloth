@@ -50,9 +50,9 @@ def index(request):
 @login_required(login_url='/signin/')
 def top(request):
     data = Post.objects.order_by('buying_date')
-    price = Post.objects.values_list('price', flat=True)
-    sum_price = sum(price)
     user = request.user
+    price = Post.objects.value_list('price', flat=True)
+    sum_price = sum(price)
     params = {
         'title': 'all cloth',
         'data': data,
@@ -176,6 +176,7 @@ def wishlist_add(request):
         'login_user': user,
     }
     if request.method == 'POST':
+        owner = user
         name = request.POST['wanted_cloth_name']
         brand_name = request.POST['wanted_brand_name']
         season = request.POST['wanted_season']
