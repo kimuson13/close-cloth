@@ -6,16 +6,16 @@ import bootstrap_datepicker_plus as datetimepicker
 from django.contrib.auth.forms import AuthenticationForm
 
 ITEM_CHOICES = [
-    ('one', 'Tops'),
-    ('two', 'Pants'),
-    ('three', 'Outers'),
-    ('four', 'SetUp'),
-    ('five', 'Coats'),
-    ('six', 'Shoes'),
-    ('seven', 'Accessories'),
-    ('eight', 'Belts'),
-    ('nine', 'Bags'),
-    ('ten', 'Others')
+    (1, 'Tops'),
+    (2, 'Pants'),
+    (3, 'Outers'),
+    (4, 'SetUp'),
+    (5, 'Coats'),
+    (6, 'Shoes'),
+    (7, 'Accessories'),
+    (8, 'Belts'),
+    (9, 'Bags'),
+    (10, 'Others')
 ]
 
 PRIORITY_CHOICES = [
@@ -41,7 +41,6 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('owner', 'cloth_name', 'item_info', 'brand_name', 'season', 'cloth_size', 'material', 'price', 'buying_place', 'buying_date', 'post_images')
         widgets = {
-            'item_info': forms.ChoiceField(choices=ITEM_CHOICES),
             'buying_date': datetimepicker.DatePickerInput(
                 format='%Y-%m-%d',
                 options={

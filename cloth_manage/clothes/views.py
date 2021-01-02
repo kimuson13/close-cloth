@@ -63,18 +63,23 @@ def top(request):
 @login_required(login_url='/signin/')
 def detail(request, num):
     data = Post.objects.get(id=num)
+    user = request.user
     params = {
         'title': 'cloth detail',
         'data': data,
         'num': num,
+        'login_user': user,
+        
     }
     return render(request, 'clothes/index/detail.html')
 
 @login_required(login_url='/signin/')
 def post(request):
+    user = request.user
     params = {
         'title': 'Post new cloth',
         'form': PostForm(), 
+        'login_user': user,
     }
     if request.method == 'POST':
         name = request.POST['cloth_name']
@@ -91,11 +96,12 @@ def post(request):
             material=material, price=price, buying_place=buying_place, post_images=post_images)
         post.save()
         return redirect(to='/top')
-    return render(request, 'clothes/index/top.html', params)
+    return render(request, 'clothes/post.html', params)
 
 @login_required(login_url='/signin/')
 def edit(request, num):
     obj = Post.objects.get(id=num)
+    user = request.user
     if request.method == 'POST':
         post = PostForm(request.POST, instance=obj)
         post.save()
@@ -104,12 +110,14 @@ def edit(request, num):
         'title': 'Edit',
         'id': num,
         'form': PostForm(instance=obj),
+        'login_user': user,
     }
     return render(request, 'clothes/index/top/detail/edit.html', params)
 
 @login_required(login_url='/signin/')
 def delete(request, num):
     post = Post.objects.get(id=num)
+    user = request.user
     if request.method == 'POST':
         post.delete()
         return redirect(to='/top')
@@ -117,11 +125,13 @@ def delete(request, num):
         'title': 'Delete',
         'id': num,
         'obj': post,
+        'login_user': user,
     }
     return render(request, 'clothes/index/top/detail/delete.html', params)
 
 @login_required(login_url='/signin/')
 def search(request):
+    user = request.user
     if request.method == 'POST':
         form = FindForm(request.POST)
         find = request.POST['find']
@@ -139,24 +149,29 @@ def search(request):
         'form': form,
         'data': data,
         'sum_price': sum_price,
+        'login_user': user,
     }
     return render(request, 'clothes/top/search.html')
 
 @login_required(login_url='/signin/')
 def wishlist(request):
+    user = request.user
     data = Wanted.objects.all()
     params = {
         'title': 'wishlist',
         'data': data,
-        'sum_price':Wanted.objects.value_list('price')
+        'sum_price':Wanted.objects.value_list('price'),
+        'login_user': user,
     }
     return render(request, 'clothes/index/top/wishlist.html')
 
 @login_required(login_url='/signin/')
 def wishlist_add(request):
+    user = request.user
     params = {
         'title': 'Add wishlist',
         'form': WantedForm(),
+        'login_user': user,
     }
     if request.method == 'POST':
         name = request.POST['wanted_cloth_name']
@@ -173,6 +188,7 @@ def wishlist_add(request):
 
 @login_required(login_url='/signin/')
 def wishlist_edit(request, num):
+    user = request.user
     obj = Wanted.objects.get(id=num)
     if request.method == 'POST':
         wanted = WantedForm(request.POST, instance=obj)
@@ -181,12 +197,14 @@ def wishlist_edit(request, num):
     params = {
         'title': 'wishlist_edit',
         'id': num,
-        'form': WantedForm(instance=obj)
+        'form': WantedForm(instance=obj),
+        'login_user': user,
     }
     return render(request, 'clothes/index/top/wishlist/wishlist_edit.html', params)
 
 @login_required(login_url='/signin/')
 def wishlist_delete(request, num):
+    user = request.user
     wanted = Wanted.objects.get(id=num)
     if request.method == 'POST':
         wanted.delete()
@@ -194,7 +212,8 @@ def wishlist_delete(request, num):
     params = {
         'title': 'wishlist_delete',
         'id': num,
-        'obj': wanted
+        'obj': wanted,
+        'login_user': user,
     }
     return render(request, 'clothes/index/top/wishlist/wishlist_delete.html', params)
 
