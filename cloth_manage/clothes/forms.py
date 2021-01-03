@@ -32,7 +32,7 @@ class PostForm(forms.ModelForm):
 class WantedForm(forms.ModelForm):
     class Meta:
         model = Wanted
-        fields = ('owner', 'wanted_cloth_name', 'wanted_brand_name', 'wanted_season', 'wanted_price', 'priority', 'wanted_images')
+        fields = ('wanted_cloth_name', 'wanted_brand_name', 'wanted_season', 'wanted_price', 'priority', 'wanted_images')
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
