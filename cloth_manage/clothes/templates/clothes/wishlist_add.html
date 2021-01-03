@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="{% url 'wishlist_add' %}" method="POST">
+<form enctype="multipart/form-data" action="{% url 'wishlist_add' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" vlaue="追加する" class="btn btn-primary">
