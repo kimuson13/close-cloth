@@ -105,7 +105,7 @@ def edit(request, num):
     obj = Post.objects.get(id=num)
     user = request.user
     if request.method == 'POST':
-        post = PostForm(request.POST, instance=obj)
+        post = PostForm(request.POST, request.FILES, instance=obj)
         post.save()
         return redirect(to='/clothes/top')
     params = {
@@ -161,7 +161,7 @@ def search(request):
 @login_required(login_url='/signin/')
 def wishlist(request):
     user = request.user
-    data = Wanted.objects.all()
+    data = Wanted.objects.filter(owner=user)
     price = Wanted.objects.filter(owner=user).values_list('wanted_price', flat=True)
     sum_price = sum(price)
     params = {
@@ -177,7 +177,7 @@ def wishlist_add(request):
     user = request.user
     params = {
         'title': 'Add wishlist',
-        'form': WantedForm(),
+        'form': WantedForm(request.POST, request.FILES),
         'login_user': user,
     }
     if request.method == 'POST':
@@ -187,7 +187,7 @@ def wishlist_add(request):
         season = request.POST['wanted_season']
         price = request.POST['wanted_price']
         priority = request.POST['priority']
-        images = request.POST['wanted_images']
+        images = request.FILES['wanted_images']
         wanted = Wanted(wanted_cloth_name=name, wanted_brand_name=brand_name, wanted_season=season, \
             wanted_price=price, priority=priority, wanted_images=images)
         wanted.save()
@@ -199,7 +199,7 @@ def wishlist_edit(request, num):
     user = request.user
     obj = Wanted.objects.get(id=num)
     if request.method == 'POST':
-        wanted = WantedForm(request.POST, instance=obj)
+        wanted = WantedForm(request.POST, request.FILES, instance=obj)
         wanted.save()
         return redirect(to='/wishlist')
     params = {
