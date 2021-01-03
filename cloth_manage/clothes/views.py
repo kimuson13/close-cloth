@@ -137,10 +137,17 @@ def search(request):
     user = request.user
     if request.method == 'POST':
         form = FindForm(request.POST)
-        find = request.POST['find']
-        data = Post.objects.filter(brand_name__icontains=find, owner=user)
+        find = request.POST.get('find')
+        data = Post.objects.order_by('buying_date')
+        if find:
+            data = data.filter(
+                Q(brand_name__icontains=find)|
+                Q(buying_place__icontains=find)|
+                Q(item_info__lte=find)
+                )
+        return data
         msg = 'Result:' + str(data.count())
-        price = Post.objects.filter(brand_name__icontains=find, owner=user).values_list('price', flat=True)
+        price = Post.objects.filter(brand_name__contains=find).values_list('price', flat=True)
         sum_price = sum(price)
     else:
         msg = 'Search words...'

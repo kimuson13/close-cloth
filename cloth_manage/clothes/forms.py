@@ -6,6 +6,7 @@ import bootstrap_datepicker_plus as datetimepicker
 from django.contrib.auth.forms import AuthenticationForm
 
 ITEM_CHOICES = [
+    (12, 'ALL'),
     (1, 'Tops'),
     (2, 'Pants'),
     (3, 'Outers'),
@@ -15,7 +16,7 @@ ITEM_CHOICES = [
     (7, 'Accessories'),
     (8, 'Belts'),
     (9, 'Bags'),
-    (10, 'Others')
+    (10, 'Others'),
 ]
 
 class UserCreateForm(UserCreationForm):
