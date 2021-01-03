@@ -3,26 +3,29 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary">{{obj.wanted_cloth_name}}の消去</h1>
+<h1 class="display-2 text-danger">Delete {{obj.wanted_cloth_name}}</h1>
 {% endblock %}
 
 {% block content %}
 <p>{{obj.wanted_cloth_name}}</p>
-<img src="{{ MEDIA_URL }}{{obj.wanted_images}}">
+<img src="{{ MEDIA_URL }}{{obj.wanted_images}}" class="img-fluid">
 <table class="table">
     <tr>
-        <th>{{obj.wanted_brand_name}}</th>
+        <th>ブランド名：{{obj.wanted_brand_name}}</th>
     </tr>
     <tr>
-        <th>{{obj.wanted_season}}</th>
+        <th>優先度：{{obj.priority}}</th>
     </tr>
     <tr>
-        <th>{{obj.wanted_price}}</th>
+        <th>シーズン：{{obj.wnated_season}}</th>
     </tr>
-    <form action="{% url 'delete' id %}" method="POST">
+    <tr>
+        <th>予想価格：{{obj.price}}</th>
+    </tr>
+    <form action="{% url 'wishlist_delete' id %}" method="POST">
         {% csrf_token %}
         <tr><th></th><td>
-            <input type="submit" value="delete" class="btn btn-danger">
+            <input type="submit" value="Delete" class="btn btn-danger">
         </td></tr>
     </form>
 </table>

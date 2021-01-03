@@ -1,0 +1,30 @@
+{% extends 'clothes/layout.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block header %}
+<h1 class="display-2 text-secondary">{{data.wanted_cloth_name}}'s Detail</h1>
+{% endblock %}
+
+{% block content %}
+<img src="{{ MEDIA_URL }}{{ data.wanted_images }}" class="img-fluid">
+<table class="table">
+        <tr>
+            <th>ブランド名：{{data.wanted_brand_name}}</th>
+        </tr>
+        <tr>
+            <th>優先度：{{data.priority}}</th>
+        </tr>
+        <tr>
+            <th>シーズン：{{data.wnated_season}}</th>
+        </tr>
+        <tr>
+            <th>予想価格：{{data.price}}</th>
+        </tr>
+        <tr>
+            <th><a class="btn btn-warning" href="{% url 'wishlist_edit' data.id %}">Edit</a></th>
+            <th><a class="btn btn-danger" href="{% url 'wishlist_delete' data.id %}">Delete</a></th>
+        </tr>
+</table>
+<a class="btn btn-primary" href="{% url 'wishlist' %}">back to WishList TOP</a>
+{% endblock %}
