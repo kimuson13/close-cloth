@@ -107,7 +107,7 @@ def edit(request, num):
     if request.method == 'POST':
         post = PostForm(request.POST, instance=obj)
         post.save()
-        return redirect(to='/top')
+        return redirect(to='/clothes/top')
     params = {
         'title': 'Edit',
         'id': num,
@@ -122,7 +122,7 @@ def delete(request, num):
     user = request.user
     if request.method == 'POST':
         post.delete()
-        return redirect(to='/top')
+        return redirect(to='/clothes/top')
     params = {
         'title': 'Delete',
         'id': num,
