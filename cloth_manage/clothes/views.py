@@ -79,7 +79,7 @@ def post(request):
     user = request.user
     params = {
         'title': 'Post new cloth',
-        'form': PostForm(), 
+        'form': PostForm(request.POST, request.FIlES), 
         'login_user': user,
     }
     if request.method == 'POST':
@@ -93,7 +93,7 @@ def post(request):
         price = request.POST['price']
         buying_place = request.POST['buying_place']
         buying_date = request.POST['buying_date']
-        post_images = request.POST['post_images']
+        post_images = request.FILES['post_images']
         post = Post(owner=owner,cloth_name=name, item_info=info, brand_name=brand_name, season=season, cloth_size=cloth_size,\
             material=material, price=price, buying_place=buying_place, post_images=post_images)
         post.save()
@@ -110,6 +110,7 @@ def edit(request, num):
         return redirect(to='/clothes/top')
     params = {
         'title': 'Edit',
+        'obj': obj,
         'id': num,
         'form': PostForm(instance=obj),
         'login_user': user,
