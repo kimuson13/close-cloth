@@ -12,7 +12,19 @@
 <p class="h4">WishList一覧</p>
 <table class="table">
     <tr>
-        <td></td>
+        <th>名称</th>
+        <th>ブランド名</th>
+        <th>優先度</th>
+        <th>予想価格</th>
+    </tr>
+    <tr>
+        {% for item in data %}
+        <td>{{item.wanted_cloth_name}}</td>
+        <td>{{item.wanted_brand_name}}</td>
+        <td>{{item.get_priority_display}}</td>
+        <td>{{item.wanted_price}}</td>
+        <td><a class="btn btn-secondary" href="{% url 'wishlist_detail' item.id %}">Detail</a></td>
+        {% endfor %}
     </tr>
 </table>
 {% endblock %}
