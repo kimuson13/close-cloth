@@ -3,13 +3,13 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary">新しい服を追加する</h1>
+<h1 class="display-2 text-primary">Add New Cloth</h1>
 {% endblock %}
 
 {% block content %}
 <form enctype="multipart/form-data" action="{% url 'post' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Add" class="btn btn-primary w-auto">
+    <input type="submit" value="Add" class="btn btn-primary">
 </form>
 {% endblock %}
