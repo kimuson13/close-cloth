@@ -16,7 +16,7 @@
 </form>
 {% for item in data %}
 <p>{{item.cloth_name}}</p>
-<img src="{{ MEDIA_URL }}{{item.post_images}}">
+<img class="img-fluid" src="{{ MEDIA_URL }}{{item.post_images}}">
 <table class="table">
     <tr>
         <th>{{item.item_info}}</th>

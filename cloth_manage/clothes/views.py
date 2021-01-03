@@ -156,7 +156,7 @@ def search(request):
         'sum_price': sum_price,
         'login_user': user,
     }
-    return render(request, 'clothes/search.html')
+    return render(request, 'clothes/search.html', params)
 
 @login_required(login_url='/signin/')
 def wishlist(request):

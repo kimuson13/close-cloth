@@ -55,4 +55,5 @@ class LoginForm(AuthenticationForm):
 
 class FindForm(forms.Form):
     item_info = forms.ChoiceField(choices=ITEM_CHOICES, required='False')
-    brand_name = forms.CharField(label='Find Brand', required='False', widget=forms.TextInput(attrs={'class':'form-control'}))
+    brand_name = forms.CharField(label='ブランドを絞り込む', required='False', widget=forms.TextInput(attrs={'class':'form-control'}))
+    buying_place = forms.CharField(label='購入場所を絞り込む', required='False', widget=forms.TextInput(attrs={'class':'form-control'}))
