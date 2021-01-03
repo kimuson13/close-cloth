@@ -114,7 +114,7 @@ def edit(request, num):
         'form': PostForm(instance=obj),
         'login_user': user,
     }
-    return render(request, 'clothes/index/top/detail/edit.html', params)
+    return render(request, 'clothes/edit.html', params)
 
 @login_required(login_url='/signin/')
 def delete(request, num):
@@ -129,7 +129,7 @@ def delete(request, num):
         'obj': post,
         'login_user': user,
     }
-    return render(request, 'clothes/index/top/detail/delete.html', params)
+    return render(request, 'clothes/delete.html', params)
 
 @login_required(login_url='/signin/')
 def search(request):
@@ -155,7 +155,7 @@ def search(request):
         'sum_price': sum_price,
         'login_user': user,
     }
-    return render(request, 'clothes/top/search.html')
+    return render(request, 'clothes/search.html')
 
 @login_required(login_url='/signin/')
 def wishlist(request):
@@ -169,7 +169,7 @@ def wishlist(request):
         'sum_price':sum_price,
         'login_user': user,
     }
-    return render(request, 'clothes/index/top/wishlist.html')
+    return render(request, 'clothes/wishlist.html')
 
 @login_required(login_url='/signin/')
 def wishlist_add(request):
@@ -191,7 +191,7 @@ def wishlist_add(request):
             wanted_price=price, priority=priority, wanted_images=images)
         wanted.save()
         return redirect(to='/wishlist')
-    return render(request, 'clothes/index/top/wishlist/wishlist_add.html', params)
+    return render(request, 'clothes/wishlist_add.html', params)
 
 @login_required(login_url='/signin/')
 def wishlist_edit(request, num):
@@ -207,7 +207,7 @@ def wishlist_edit(request, num):
         'form': WantedForm(instance=obj),
         'login_user': user,
     }
-    return render(request, 'clothes/index/top/wishlist/wishlist_edit.html', params)
+    return render(request, 'clothes/wishlist_edit.html', params)
 
 @login_required(login_url='/signin/')
 def wishlist_delete(request, num):
@@ -222,6 +222,6 @@ def wishlist_delete(request, num):
         'obj': wanted,
         'login_user': user,
     }
-    return render(request, 'clothes/index/top/wishlist/wishlist_delete.html', params)
+    return render(request, 'clothes/wishlist_delete.html', params)
 
 
