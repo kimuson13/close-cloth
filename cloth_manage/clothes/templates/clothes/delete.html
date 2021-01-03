@@ -3,11 +3,11 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-danger">{{obj.cloth_name}}の消去</h1>
+<h1 class="display-2 text-danger w-auto">{{obj.cloth_name}}の消去</h1>
 {% endblock %}
 
 {% block content %}
-<img src="{{ MEDIA_URL }}{{obj.post_images}}">
+<img src="{{ MEDIA_URL }}{{obj.post_images}}" class="img-fluid">
 <table class="table">
     <tr>
         <th>種類：{{obj.get_item_info_display}}</th>

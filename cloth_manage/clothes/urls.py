@@ -16,5 +16,6 @@ urlpatterns = [
     path('wishlist_add', views.wishlist_add, name='wishlist_add'),
     path('wishlist_edit/<int:num>', views.wishlist_edit, name='wishlist_edit'),
     path('wishlist_delete/<int:num>', views.wishlist_delete, name='wishlist_delete'),
+    path('wishlist_detail/<int:num>', views.wishlist_detail, name='wishlist_detail'),
     path('logout', views.LogoutView.as_view(), name='logout'),
 ]

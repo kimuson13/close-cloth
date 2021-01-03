@@ -15,11 +15,11 @@ ITEM_CHOICES = (
 )
 
 PRIORITY_CHOICES = (
-    (1, 'Priority_1'),
-    (2, 'Priority_2'),
-    (3, 'Priority_3'),
-    (4, 'Priority_4'),
-    (5, 'Priority_5')
+    (1, '優先度1'),
+    (2, '優先度2'),
+    (3, '優先度3'),
+    (4, '優先度4'),
+    (5, '優先度5')
 )
 
 class Post(models.Model):

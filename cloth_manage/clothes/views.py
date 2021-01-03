@@ -49,7 +49,7 @@ def index(request):
 
 @login_required(login_url='/signin/')
 def top(request):
-    data = Post.objects.order_by('buying_date')
+    data = Post.objects.order_by('buying_date').reverse()
     user = request.user
     price = Post.objects.filter(owner=user).values_list('price', flat=True)
     sum_price = sum(price)
@@ -171,6 +171,18 @@ def wishlist(request):
         'login_user': user,
     }
     return render(request, 'clothes/wishlist.html')
+
+@login_required(login_url='/signin/')
+def wishlist_detail(request, num):
+    user = request.user
+    data = Wanted.objects.filter(owner=user).get(id=num)
+    params = {
+        'title': 'WishList detail',
+        'data': data,
+        'num': num,
+        'login_user': user,
+    }
+    return render(request, 'clothes/wishlist_detail.html', params)
 
 @login_required(login_url='/signin/')
 def wishlist_add(request):

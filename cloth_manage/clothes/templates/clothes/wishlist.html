@@ -3,33 +3,16 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary">WishList</h1>
+<h1 class="display-2 text-info">WishList</h1>
 {% endblock %}
 
 {% block content %}
-<p>WishListの追加はこちらから</p>
-<a href="{% url 'wishlist_add' %}">追加</a>
-<p>WishList一覧</p>
-{% for item in data %}
-<p>{{item.wanted_cloth_name}}</p>
-<img src="{{ MEDIA_URL }}{{data.wanted_images}}">
+<p class="h4 text-primary">WishListの追加はこちらから</p>
+<a class="btn btn-primary" href="{% url 'wishlist_add' %}">Add WishList</a>
+<p class="h4">WishList一覧</p>
 <table class="table">
     <tr>
-        <th>{{item.wanted_brand_name}}</th>
-    </tr>
-    <tr>
-        <th>{{item.wanted_season}}</th>
-    </tr>
-    <tr>
-        <th>{{item.wanted_price}}</th>
-    </tr>
-    <tr>
-        <th>{{item.priority}}</th>
-    </tr>
-    <tr>
-        <th><a href="{% url 'wishlist_edit' item.id %}">編集</a></th>
-        <th><a href="{% url 'wishlist_delete' item.id %}">削除</a></th>
+        <td></td>
     </tr>
 </table>
-{% endfor %}
 {% endblock %}
