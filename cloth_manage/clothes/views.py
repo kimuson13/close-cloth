@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .models import Post, Wanted
-from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, FindForm
+from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, NameSearchForm
 
 
 # Create your views here.
@@ -136,32 +136,25 @@ def delete(request, num):
 def search(request):
     user = request.user
     if request.method == 'POST':
-        form = FindForm(request.POST)
-        find = request.POST.get('find')
-        data = Post.objects.order_by('buying_date')
-        if find:
-            data = data.filter(
-                Q(brand_name__icontains=find)|
-                Q(buying_place__icontains=find)|
-                Q(item_info__lte=find)
-                )
-        return data
+        form = NameSearchForm(request.POST)
+        search = request.POST.get('search')
+        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search))
         msg = 'Result:' + str(data.count())
-        price = Post.objects.filter(brand_name__contains=find).values_list('price', flat=True)
+        price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)).values_list('price', flat=True)
         sum_price = sum(price)
     else:
         msg = 'Search words...'
-        form = FindForm()
-        data = Post.objects.filter(owner=user)
+        form = NameSearchForm()
+        data = Post.objects.order_by('buying_date')
         price = Post.objects.filter(owner=user).values_list('price', flat=True)
         sum_price = sum(price)
     params = {
-        'title':'Search some cloth',
+        'title': 'Search clothes',
         'message': msg,
         'form': form,
         'data': data,
-        'sum_price': sum_price,
         'login_user': user,
+        'sum_price': sum_price,
     }
     return render(request, 'clothes/search.html', params)
 
@@ -195,7 +188,7 @@ def wishlist_add(request):
         price = request.POST['wanted_price']
         priority = request.POST['priority']
         images = request.FILES['wanted_images']
-        wanted = Wanted(wanted_cloth_name=name, wanted_brand_name=brand_name, wanted_season=season, \
+        wanted = Wanted(owner=owner,wanted_cloth_name=name, wanted_brand_name=brand_name, wanted_season=season, \
             wanted_price=price, priority=priority, wanted_images=images)
         wanted.save()
         return redirect(to='/wishlist')

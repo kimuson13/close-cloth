@@ -3,15 +3,16 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary">絞り込み、検索</h1>
+<h1 class="display-2 text-success">服の検索</h1>
 {% endblock %}
 
 {% block content %}
+<p class="h4">{{message|safe}}</p>
 <form action="{% url 'search' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <tr><th></th><td>
-        <input type="submit" value="click" class="btn btn-primary w-auto">
+        <input type="submit" value="Search" class="btn btn-success w-auto">
     </td></tr>
 </form>
 <table class="table">

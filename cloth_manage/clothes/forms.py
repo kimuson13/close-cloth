@@ -5,20 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 import bootstrap_datepicker_plus as datetimepicker
 from django.contrib.auth.forms import AuthenticationForm
 
-ITEM_CHOICES = [
-    (12, 'ALL'),
-    (1, 'Tops'),
-    (2, 'Pants'),
-    (3, 'Outers'),
-    (4, 'SetUp'),
-    (5, 'Coats'),
-    (6, 'Shoes'),
-    (7, 'Accessories'),
-    (8, 'Belts'),
-    (9, 'Bags'),
-    (10, 'Others'),
-]
-
 class UserCreateForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -54,7 +40,6 @@ class LoginForm(AuthenticationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['class'] = 'form-control'
 
-class FindForm(forms.Form):
-    item_info = forms.ChoiceField(choices=ITEM_CHOICES, required='False')
-    brand_name = forms.CharField(label='ブランドを絞り込む', required='False', widget=forms.TextInput(attrs={'class':'form-control'}))
-    buying_place = forms.CharField(label='購入場所を絞り込む', required='False', widget=forms.TextInput(attrs={'class':'form-control'}))
+class NameSearchForm(forms.Form):
+    search = forms.CharField(label="ブランド名か購入場所を入力", required=False, \
+        widget=forms.TextInput(attrs={'class':'form-control'}))
