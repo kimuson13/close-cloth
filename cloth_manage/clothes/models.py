@@ -37,7 +37,7 @@ class Post(models.Model):
         blank=True,
         null=True,
     )
-    post_images = models.ImageField(upload_to='media/')
+    post_images = models.ImageField(upload_to='media')
     def __str__(self):
         return str(self.cloth_name) + '(' + str(self.owner) + ')'
 
@@ -48,7 +48,7 @@ class Wanted(models.Model):
     wanted_season = models.CharField(max_length=7)
     wanted_price = models.PositiveIntegerField()
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
-    wanted_images = models.ImageField(upload_to='media/')
+    wanted_images = models.ImageField(upload_to='media')
     def __str__(self):
         return str(self.wanted_cloth_name) + '(' + str(self.owner) + ')'
 
