@@ -3,7 +3,7 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary">{{obj.cloth_name}}の消去</h1>
+<h1 class="display-2 text-danger">{{obj.cloth_name}}の消去</h1>
 {% endblock %}
 
 {% block content %}
@@ -36,7 +36,7 @@
     <form action="{% url 'delete' id %}" method="POST">
         {% csrf_token %}
         <tr><th></th><td>
-            <input type="submit" value="delete" class="btn btn-danger">
+            <input type="submit" value="Delete" class="btn btn-danger">
         </td></tr>
     </form>
 </table>

@@ -3,7 +3,7 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-success">服の検索</h1>
+<h1 class="display-2 text-success">Searcn Cloth</h1>
 {% endblock %}
 
 {% block content %}
@@ -29,7 +29,7 @@
         <td>{{item.get_item_info_display}}</td>
         <td>{{item.brand_name}}</td>
         <td>{{item.price}}</td>
-        <td><a class="btn btn-secondary" href="{% url 'detail' item.id %}">detail</a></td>
+        <td><a class="btn btn-secondary" href="{% url 'detail' item.id %}">Detail</a></td>
         {% endif %}
     </tr>
     {% endfor %}
