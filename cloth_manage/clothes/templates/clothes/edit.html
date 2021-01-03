@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<form enctype="multipart/form-data" action="{% url 'edit' %}" method="POST">
+<form enctype="multipart/form-data" action="{% url 'edit' id %}" method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
