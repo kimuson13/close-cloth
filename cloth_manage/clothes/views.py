@@ -79,7 +79,7 @@ def post(request):
     user = request.user
     params = {
         'title': 'Post new cloth',
-        'form': PostForm(request.POST, request.FIlES), 
+        'form': PostForm(), 
         'login_user': user,
     }
     if request.method == 'POST':
@@ -95,7 +95,7 @@ def post(request):
         buying_date = request.POST['buying_date']
         post_images = request.FILES['post_images']
         post = Post(owner=owner,cloth_name=name, item_info=info, brand_name=brand_name, season=season, cloth_size=cloth_size,\
-            material=material, price=price, buying_place=buying_place, post_images=post_images)
+            material=material, price=price, buying_place=buying_place, buying_date=buying_date, post_images=post_images)
         post.save()
         return redirect(to='/clothes/top')
     return render(request, 'clothes/post.html', params)
@@ -146,7 +146,7 @@ def search(request):
         msg = 'Search words...'
         form = FindForm()
         data = Post.objects.filter(owner=user)
-        price = Post.objects.filter(owner=user).values_list('prise', flat=True)
+        price = Post.objects.filter(owner=user).values_list('price', flat=True)
         sum_price = sum(price)
     params = {
         'title':'Search some cloth',

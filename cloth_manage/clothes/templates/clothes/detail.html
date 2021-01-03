@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<img src="{{ MEDIA_URL }}{{ data.post_images }}">
+<img src="{{ MEDIA_URL }}{{ data.post_images }}" class="img-fluid">
 <table class="table">
         <tr>
             <th>種類：{{data.get_item_info_display}}</th>
