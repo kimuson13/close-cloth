@@ -3,12 +3,12 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary align-baseline">Close Cloth TOP</h1>
+<h1 class="display-2 text-primary text-center">Close Cloth TOP</h1>
 {% endblock %}
 
 {% block content %}
 <a class="btn btn-primary w-100" href="{% url 'post' %}">Add new cloth</a>
-<h1 class="display-4 text-primary">All clothes!</h1>
+<h1 class="display-3 text-primary text-center">All clothes!</h1>
 <table class="table">
     <tr>
         <th>名称</th>
@@ -30,9 +30,9 @@
 </table>
 <p class="h2 text-secondary">服の合計金額：{{sum_price}}円</p>
 <br>
-<h1 class="h4">検索はこちらから</h1>
+<h1 class="h4 text-center">検索はこちらから</h1>
 <a class="btn btn-success w-100" href="{% url 'search' %}">Search</a>
 <br>
-<h1 class="h4">WishListはこちらから</h1>
+<h1 class="h4 text-center">WishListはこちらから</h1>
 <a class="btn btn-info w-100" href="{% url 'wishlist' %}">WishList</a>
 {% endblock %}

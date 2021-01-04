@@ -3,7 +3,7 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-success">Searcn Cloth</h1>
+<h1 class="display-2 text-success text-center">Search Cloth</h1>
 {% endblock %}
 
 {% block content %}
@@ -34,7 +34,7 @@
     </tr>
     {% endfor %}
 </table>
-<p>服の合計金額：{{sum_price}}</p>
+<p class="h2 text-secondary">服の合計金額：{{sum_price}}</p>
 <br>
 <a class="btn btn-primary w-100" href="{% url 'top' %}">TOPに戻る</a>
 {% endblock %}
