@@ -45,11 +45,6 @@ class WantedForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(WantedForm, self).__init__(*args, **kwargs)
         self.fields["wanted_price"].required = False
-        self.fields["wanted_cloth_name"].required = False
-        self.fields["wanted_brand_name"].required = False
-        self.fields["wanted_season"].required = False
-        self.fields["priority"].required = False
-        self.fields["wanted_images"].required = False
     class Meta:
         model = Wanted
         fields = ('wanted_cloth_name', 'wanted_brand_name', 'wanted_season', 'wanted_price', 'priority', 'wanted_images')

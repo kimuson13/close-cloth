@@ -33,10 +33,12 @@
         <tr>
             <th>購入日時：{{data.buying_date}}</th>
         </tr>
-        <tr>
-            <th><a class="btn btn-warning" href="{% url 'edit' data.id %}">Edit</a></th>
-            <th><a class="btn btn-danger" href="{% url 'delete' data.id %}">Delete</a></th>
-        </tr>
 </table>
-<a class="btn btn-primary" href="{% url 'top' %}">back to TOP</a>
+<a class="btn btn-warning w-100" href="{% url 'edit' data.id %}">Edit</a>
+<br>
+<a class="btn btn-danger w-100" href="{% url 'delete' data.id %}">Delete</a>
+<br>
+<a class="btn btn-primary w-100" href="{% url 'top' %}">back to TOP</a>
 {% endblock %}
+
+

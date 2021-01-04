@@ -10,6 +10,6 @@
 <form enctype="multipart/form-data" action="{% url 'wishlist_add' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Add" class="btn btn-primary">
+    <input type="submit" value="Add" class="btn btn-primary w-100">
 </form>
 {% endblock %}

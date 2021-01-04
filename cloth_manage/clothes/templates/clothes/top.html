@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<a class="btn btn-primary" href="{% url 'post' %}">Add new cloth</a>
+<a class="btn btn-primary w-100" href="{% url 'post' %}">Add new cloth</a>
 <h1 class="display-4 text-primary">All clothes!</h1>
 <table class="table">
     <tr>
@@ -31,8 +31,8 @@
 <p class="h2 text-secondary">服の合計金額：{{sum_price}}円</p>
 <br>
 <h1 class="h4">検索はこちらから</h1>
-<a class="btn btn-success" href="{% url 'search' %}">Search</a>
+<a class="btn btn-success w-100" href="{% url 'search' %}">Search</a>
 <br>
 <h1 class="h4">WishListはこちらから</h1>
-<a class="btn btn-info" href="{% url 'wishlist' %}">WishList</a>
+<a class="btn btn-info w-100" href="{% url 'wishlist' %}">WishList</a>
 {% endblock %}

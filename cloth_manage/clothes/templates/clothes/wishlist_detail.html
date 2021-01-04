@@ -21,10 +21,8 @@
         <tr>
             <th>予想価格：{{data.wanted_price}}円</th>
         </tr>
-        <tr>
-            <th><a class="btn btn-warning" href="{% url 'wishlist_edit' data.id %}">Edit</a></th>
-            <th><a class="btn btn-danger" href="{% url 'wishlist_delete' data.id %}">Delete</a></th>
-        </tr>
 </table>
-<a class="btn btn-primary" href="{% url 'wishlist' %}">back to WishList TOP</a>
+<a class="btn btn-warning w-100" href="{% url 'wishlist_edit' data.id %}">Edit</a>
+<a class="btn btn-danger w-100" href="{% url 'wishlist_delete' data.id %}">Delete</a>
+<a class="btn btn-primary w-100" href="{% url 'wishlist' %}">back to WishList TOP</a>
 {% endblock %}

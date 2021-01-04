@@ -25,7 +25,7 @@
     <form action="{% url 'wishlist_delete' id %}" method="POST">
         {% csrf_token %}
         <tr><th></th><td>
-            <input type="submit" value="Delete" class="btn btn-danger">
+            <input type="submit" value="Delete" class="btn btn-danger w-100">
         </td></tr>
     </form>
 </table>
