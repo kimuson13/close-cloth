@@ -203,7 +203,7 @@ def wishlist_add(request):
         wanted = Wanted(owner=owner,wanted_cloth_name=name, wanted_brand_name=brand_name, wanted_season=season, \
             wanted_price=price, priority=priority, wanted_images=images)
         wanted.save()
-        return redirect(to='/wishlist')
+        return redirect(to='/clothes/wishlist')
     return render(request, 'clothes/wishlist_add.html', params)
 
 @login_required(login_url='/signin/')
@@ -213,7 +213,7 @@ def wishlist_edit(request, num):
     if request.method == 'POST':
         wanted = WantedForm(request.POST, request.FILES, instance=obj)
         wanted.save()
-        return redirect(to='/wishlist')
+        return redirect(to='/clothes/wishlist')
     params = {
         'title': 'wishlist_edit',
         'id': num,
@@ -228,7 +228,7 @@ def wishlist_delete(request, num):
     wanted = Wanted.objects.get(id=num)
     if request.method == 'POST':
         wanted.delete()
-        return redirect(to='/wishlist')
+        return redirect(to='/clothes/wishlist')
     params = {
         'title': 'wishlist_delete',
         'id': num,
