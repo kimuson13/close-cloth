@@ -7,20 +7,20 @@
 {% endblock %}
 
 {% block content %}
-<p>{{obj.wanted_cloth_name}}</p>
+<p class="h2">{{obj.wanted_cloth_name}}</p>
 <img src="{{ MEDIA_URL }}{{obj.wanted_images}}" class="img-fluid">
 <table class="table">
     <tr>
         <th>ブランド名：{{obj.wanted_brand_name}}</th>
     </tr>
     <tr>
-        <th>優先度：{{obj.priority}}</th>
+        <th>優先度：{{obj.get_priority_display}}</th>
     </tr>
     <tr>
-        <th>シーズン：{{obj.wnated_season}}</th>
+        <th>シーズン：{{obj.wanted_season}}</th>
     </tr>
     <tr>
-        <th>予想価格：{{obj.price}}</th>
+        <th>予想価格：{{obj.wanted_price}}</th>
     </tr>
     <form action="{% url 'wishlist_delete' id %}" method="POST">
         {% csrf_token %}

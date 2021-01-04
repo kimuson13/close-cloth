@@ -17,14 +17,23 @@
         <th>優先度</th>
         <th>予想価格</th>
     </tr>
+    {% for item in data %}
     <tr>
-        {% for item in data %}
+        {% if login_user == item.owner %}
         <td>{{item.wanted_cloth_name}}</td>
         <td>{{item.wanted_brand_name}}</td>
+        {% if item.priority == 1 %}
+        <td class="text-danger">{{item.get_priority_display}}</td>
+        {% elif item.priority == 2 %}
+        <td class="text-warning">{{item.get_priority_display}}</td>
+        {% else %}
         <td>{{item.get_priority_display}}</td>
-        <td>{{item.wanted_price}}</td>
+        {% endif %}
+        <td>{{item.wanted_price}}円</td>
         <td><a class="btn btn-secondary" href="{% url 'wishlist_detail' item.id %}">Detail</a></td>
-        {% endfor %}
+        {% endif %}
     </tr>
+    {% endfor %}
 </table>
+<p class="h2 text-secondary">予想額合計：{{sum_price}}円</p>
 {% endblock %}

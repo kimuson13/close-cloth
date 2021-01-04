@@ -13,13 +13,13 @@
             <th>ブランド名：{{data.wanted_brand_name}}</th>
         </tr>
         <tr>
-            <th>優先度：{{data.priority}}</th>
+            <th>優先度：{{data.get_priority_display}}</th>
         </tr>
         <tr>
-            <th>シーズン：{{data.wnated_season}}</th>
+            <th>シーズン：{{data.wanted_season}}</th>
         </tr>
         <tr>
-            <th>予想価格：{{data.price}}</th>
+            <th>予想価格：{{data.wanted_price}}円</th>
         </tr>
         <tr>
             <th><a class="btn btn-warning" href="{% url 'wishlist_edit' data.id %}">Edit</a></th>

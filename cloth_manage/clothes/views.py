@@ -161,7 +161,7 @@ def search(request):
 @login_required(login_url='/signin/')
 def wishlist(request):
     user = request.user
-    data = Wanted.objects.filter(owner=user)
+    data = Wanted.objects.order_by('priority')
     price = Wanted.objects.filter(owner=user).values_list('wanted_price', flat=True)
     sum_price = sum(price)
     params = {
@@ -170,7 +170,7 @@ def wishlist(request):
         'sum_price':sum_price,
         'login_user': user,
     }
-    return render(request, 'clothes/wishlist.html')
+    return render(request, 'clothes/wishlist.html', params)
 
 @login_required(login_url='/signin/')
 def wishlist_detail(request, num):

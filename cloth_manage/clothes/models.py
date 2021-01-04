@@ -18,8 +18,6 @@ PRIORITY_CHOICES = (
     (1, '優先度1'),
     (2, '優先度2'),
     (3, '優先度3'),
-    (4, '優先度4'),
-    (5, '優先度5')
 )
 
 class Post(models.Model):
