@@ -22,13 +22,13 @@
         <td>{{item.cloth_name}}</td>
         <td>{{item.get_item_info_display}}</td>
         <td>{{item.brand_name}}</td>
-        <td>{{item.price}}</td>
+        <td>{{item.price}}円</td>
         <td><a class="btn btn-secondary" href="{% url 'detail' item.id %}">Detail</a></td>
         {% endif %}
     </tr>
     {% endfor %}
 </table>
-<p>服の合計金額：{{sum_price}}</p>
+<p>服の合計金額：{{sum_price}}円</p>
 <br>
 <h1 class="h4">検索はこちらから</h1>
 <a class="btn btn-success" href="{% url 'search' %}">Search</a>
