@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Q
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, NameSearchForm
@@ -48,14 +49,15 @@ def index(request):
     return render(request, 'clothes/index.html', params)
 
 @login_required(login_url='/signin/')
-def top(request):
+def top(request, num=1):
     data = Post.objects.order_by('buying_date').reverse()
     user = request.user
     price = Post.objects.filter(owner=user).values_list('price', flat=True)
     sum_price = sum(price)
+    page = Paginator(data, 5)
     params = {
         'title': 'all cloth',
-        'data': data,
+        'data': page.get_page(num),
         'sum_price': sum_price,
         'login_user': user,
     }
@@ -159,14 +161,15 @@ def search(request):
     return render(request, 'clothes/search.html', params)
 
 @login_required(login_url='/signin/')
-def wishlist(request):
+def wishlist(request, num=1):
     user = request.user
     data = Wanted.objects.order_by('priority')
     price = Wanted.objects.filter(owner=user).values_list('wanted_price', flat=True)
     sum_price = sum(price)
+    page = Paginator(data, 5)
     params = {
         'title': 'wishlist',
-        'data': data,
+        'data': page.get_page(num),
         'sum_price':sum_price,
         'login_user': user,
     }
