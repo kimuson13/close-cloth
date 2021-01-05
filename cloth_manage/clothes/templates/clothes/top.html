@@ -34,7 +34,7 @@
         <a class="page-link" href="{% url 'top' %}">&laquo; First</a>
     </li>
     <li class="page-item">
-        <a class="page-link" href="{% url 'top' %}{{data.previous_page_number}}">&laquo; Prev</a>
+        <a class="page-link" href="{% url 'top' %}/{{data.previous_page_number}}">&laquo; Prev</a>
     </li>
     {% else %}
     <li class="page-item">
@@ -49,10 +49,10 @@
     </li>
     {% if data.has_next %}
     <li class="page-item">
-        <a class="page-link" href="{% url 'top' %}{{data.next_page_number}}">Next &raquo;</a>
+        <a class="page-link" href="{% url 'top' %}/{{data.next_page_number}}">Next &raquo;</a>
     </li>
     <li class="page-item">
-        <a class="page-link" href="{% url 'top' %}{{data.paginator_num_pages}}">Last &raquo;</a>
+        <a class="page-link" href="{% url 'top' %}/{{data.paginator.num_pages}}">Last &raquo;</a>
     </li>
     {% else %}
     <li class="page-item">
