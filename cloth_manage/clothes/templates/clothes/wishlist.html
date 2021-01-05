@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block content %}
-<p class="h4 text-primary text-center">WishListの追加はこちらから</p>
-<a class="btn btn-primary w-100" href="{% url 'wishlist_add' %}">Add WishList</a>
+<p class="h4 text-info text-center">WishListの追加はこちらから</p>
+<a class="btn btn-info w-100" href="{% url 'wishlist_add' %}">Add WishList</a>
 <p class="h4">WishList一覧</p>
 <table class="table">
     <tr>
@@ -35,5 +35,40 @@
     </tr>
     {% endfor %}
 </table>
+<ul class="pagination justify-content-center">
+    {% if data.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="{% url 'wishlist' %}">&laquo; First</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="{% url 'wishlist' %}/{{data.previous_page_number}}">&laquo; Prev</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link">&laquo; First</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link">&laquo; Prev</a>
+    </li>
+    {% endif %}
+    <li class="page-item">
+        <a class="page-link">{{data.number}}/{{data.paginator.num_pages}}</a>
+    </li>
+    {% if data.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="{% url 'wishlist' %}/{{data.next_page_number}}">Next &raquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="{% url 'wishlist' %}/{{data.paginator.num_pages}}">Last &raquo;</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link">Next &raquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link">Last &raquo;</a>
+    </li>
+    {% endif %}
+</ul>
 <p class="h2 text-secondary">予想額合計：{{sum_price}}円</p>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary text-center">Close Cloth TOP</h1>
+<h1 class="display-2 text-primary text-center">Close Cloth</h1>
 {% endblock %}
 
 {% block content %}
@@ -28,7 +28,7 @@
     </tr>
     {% endfor %}
 </table>
-<ul class="pagination w-100">
+<ul class="pagination justify-content-center">
     {% if data.has_previous %}
     <li class="page-item">
         <a class="page-link" href="{% url 'top' %}">&laquo; First</a>
