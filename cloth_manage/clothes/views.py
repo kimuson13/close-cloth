@@ -135,26 +135,28 @@ def delete(request, num):
     return render(request, 'clothes/delete.html', params)
 
 @login_required(login_url='/signin/')
-def search(request):
+def search(request, num=1):
     user = request.user
     if request.method == 'POST':
         form = NameSearchForm(request.POST)
         search = request.POST.get('search')
-        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search))
+        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)).order_by('buying_date').reverse()
         msg = 'Result:' + str(data.count())
         price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)).values_list('price', flat=True)
         sum_price = sum(price)
+        page = Paginator(data, 5)
     else:
         msg = 'Search words...'
         form = NameSearchForm()
-        data = Post.objects.order_by('buying_date')
+        data = Post.objects.order_by('buying_date').reverse()
         price = Post.objects.filter(owner=user).values_list('price', flat=True)
         sum_price = sum(price)
+        page = Paginator(data, 5)
     params = {
         'title': 'Search clothes',
         'message': msg,
         'form': form,
-        'data': data,
+        'data': page.get_page(num),
         'login_user': user,
         'sum_price': sum_price,
     }
