@@ -9,7 +9,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, NameSearchForm
-
+import re
 
 # Create your views here.
 class Create_account(CreateView):
@@ -141,23 +141,22 @@ def search(request, num=1):
     if request.method == 'POST':
         form = NameSearchForm(request.POST)
         search = request.POST.get('search')
-        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)).order_by('buying_date').reverse()
+        if search == "tops":
+            search = 1
+        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info=search)).order_by('buying_date').reverse()
         msg = 'Result:' + str(data.count())
-        price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)).values_list('price', flat=True)
+        price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info=search)).values_list('price', flat=True)
         sum_price = sum(price)
-        page = Paginator(data, 5)
     else:
         msg = 'Search words...'
         form = NameSearchForm()
-        data = Post.objects.order_by('buying_date').reverse()
-        price = Post.objects.filter(owner=user).values_list('price', flat=True)
-        sum_price = sum(price)
-        page = Paginator(data, 5)
+        data = None
+        sum_price = 0
     params = {
         'title': 'Search clothes',
         'message': msg,
         'form': form,
-        'data': page.get_page(num),
+        'data': data,
         'login_user': user,
         'sum_price': sum_price,
     }
