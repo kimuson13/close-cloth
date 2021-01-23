@@ -9,7 +9,6 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, NameSearchForm
-import re
 
 # Create your views here.
 class Create_account(CreateView):
@@ -141,11 +140,29 @@ def search(request, num=1):
     if request.method == 'POST':
         form = NameSearchForm(request.POST)
         search = request.POST.get('search')
-        if search == "tops":
+        if search.lower() == 'tops':
             search = 1
-        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info=search)).order_by('buying_date').reverse()
+        elif search.lower() == 'pants':
+            search = 2
+        elif search.lower() == 'outers':
+            search = 3
+        elif search.lower() == 'setup':
+            search = 4
+        elif search.lower() == 'coats':
+            search = 5
+        elif search.lower() == 'shoes':
+            search = 6
+        elif search.lower() == 'accessories':
+            search = 7
+        elif search.lower() == 'belts':
+            search = 8
+        elif search.lower() == 'bags':
+            search = 9
+        elif search.lower() == 'others':
+            search = 10
+        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info__contains=search)).order_by('buying_date').reverse()
         msg = 'Result:' + str(data.count())
-        price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info=search)).values_list('price', flat=True)
+        price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info__contains=search)).values_list('price', flat=True)
         sum_price = sum(price)
     else:
         msg = 'Search words...'

@@ -64,5 +64,5 @@ class LoginForm(AuthenticationForm):
         self.fields['password'].widget.attrs['class'] = 'form-control'
 
 class NameSearchForm(forms.Form):
-    search = forms.CharField(label="ブランド名か購入場所を入力", required=True, \
+    search = forms.CharField(label="ブランド名か購入場所、アイテムの種類を入力", required=True, \
         widget=forms.TextInput(attrs={'class':'form-control'}))
