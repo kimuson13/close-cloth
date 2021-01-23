@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.views import View
 from django.contrib.auth.decorators import login_required
 from .models import Post, Wanted
 from . forms import UserCreateForm, PostForm, WantedForm, LoginForm, NameSearchForm
