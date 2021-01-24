@@ -78,3 +78,7 @@ class ClothesTest(TestCase):
         self.client.force_login(usr)
         res4 = self.client.get(reverse('top'))
         self.assertIs(res4.status_code, 200)
+        res5 = self.client.get('/clothes/detail/1')
+        self.assertIs(res5.status_code, 200)
+        res6 = self.client.get(reverse('post'))
+        self.assertIs(res6.status_code, 200)
