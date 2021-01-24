@@ -61,3 +61,6 @@ class ClothesTest(TestCase):
         c2 = Wanted.objects.all().count()
         self.assertIs(c1, 4)
         self.assertIs(c2, 3)
+        post1 = Post.objects.all().first()
+        post2 = Post.objects.all().last()
+        self.assertIsNot(post1, post2)
