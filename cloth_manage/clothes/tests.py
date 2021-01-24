@@ -2,24 +2,22 @@ from __future__ import unicode_literals
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Post, Wanted
-import datetime, io
-from django.core.files.uploadedfile import SimpleUploadedFile
-from PIL import Image
+import datetime
+from PIL import Image, ImageDraw, ImageFont
 # Create your tests here.
-def get_image_dict():
-        img_file = io.StringIO()
-        img = Image.new('RGBA', size=(10,10), color=(255, 255, 255))
-        img.save(img_file, 'jpeg')
-        img_file.name = 'test_img.jpeg'
-        img_file.seek(0)
-        img_dict = {
-            'image': SimpleUploadedFile(
-                img_file.name,
-                img_file.read(),
-                content_type='media'
-            )
-        }
-        return img_dict
+def get_image():
+    screen = (200, 200)
+    pen_color = (255, 0, 0)
+    bg_color = (0, 255, 0)
+    img = Image.new('RGB', screen, bg_color)
+    x, y = img.size
+    u = x - 1
+    v = y - 1
+    draw = ImageDraw.Draw(img)
+    draw.line((0, 0, u, 0), pen_color)
+    filename = "/sample.jpg"
+    img.save("media"+filename)
+    return filename
 class ClothesTest(TestCase):
     @classmethod
     def setUpClass(cls):
@@ -35,11 +33,11 @@ class ClothesTest(TestCase):
     @classmethod
     def create_post(cls, usr):
         Post(owner=usr, cloth_name='test', item_info=1, brand_name='test', season='test', cloth_size='test', \
-            material='test', price=1, buying_place='test', buying_date=datetime.date.today(), post_images=get_image_dict()).save()
+            material='test', price=1, buying_place='test', buying_date=datetime.date.today(), post_images=get_image()).save()
     @classmethod
     def create_wish(cls, usr):
         Wanted(owner=usr, wanted_cloth_name='test', wanted_brand_name='test', wanted_season='test', wanted_price=1, \
-            priority=1, wanted_images=get_image_dict()).save()
+            priority=1, wanted_images=get_image()).save()
     def test_check(self):
         usr = User.objects.first()
         self.assertIsNotNone(usr)
@@ -47,3 +45,8 @@ class ClothesTest(TestCase):
         self.assertIsNotNone(post)
         wish = Wanted.objects.first()
         self.assertIsNotNone(wish)
+        self.assertEquals(usr, post.owner, wish.owner)
+        c1 = Post.objects.all().count()
+        c2 = Wanted.objects.all().count()
+        self.assertIs(c1, 1)
+        self.assertIs(c2, 1)
