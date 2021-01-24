@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.urls import reverse
 from .models import Post, Wanted
 import datetime, random
 from PIL import Image, ImageDraw, ImageFont
@@ -50,13 +52,13 @@ class ClothesTest(TestCase):
         Wanted(owner=usr, wanted_cloth_name='test3', wanted_brand_name='test3', wanted_season='test3', wanted_price=1, \
             priority=1, wanted_images=get_image(7)).save()
     def test_check(self):
-        usr = User.objects.first()
+        usr = User.objects.filter(username='test').first()
         self.assertIsNotNone(usr)
         post = Post.objects.first()
         self.assertIsNotNone(post)
         wish = Wanted.objects.first()
         self.assertIsNotNone(wish)
-        self.assertEquals(usr, post.owner, wish.owner)
+        self.assertEquals(usr.username, post.owner.username, wish.owner.username)
         c1 = Post.objects.all().count()
         c2 = Wanted.objects.all().count()
         self.assertIs(c1, 4)
@@ -64,3 +66,15 @@ class ClothesTest(TestCase):
         post1 = Post.objects.all().first()
         post2 = Post.objects.all().last()
         self.assertIsNot(post1, post2)
+        want1 = Wanted.objects.all().first()
+        want2 = Wanted.objects.all().last()
+        self.assertIsNot(want1, want2)
+        response1 = self.client.get(reverse('index'))
+        self.assertIs(response1.status_code, 200)
+        response2 = self.client.get(reverse('signup'))
+        self.assertIs(response2.status_code, 200)
+        res3 = self.client.get(reverse('signin'))
+        self.assertIs(res3.status_code, 200)
+        self.client.force_login(usr)
+        res4 = self.client.get(reverse('top'))
+        self.assertIs(res4.status_code, 200)
