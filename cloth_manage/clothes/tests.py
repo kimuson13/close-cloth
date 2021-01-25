@@ -6,6 +6,7 @@ from django.urls import reverse
 from .models import Post, Wanted
 import datetime, random
 from PIL import Image, ImageDraw, ImageFont
+from .forms import PostForm, WantedForm
 # Create your tests here.
 colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 0, 0), (255, 255, 255)]
 def get_image(n):
@@ -78,12 +79,16 @@ class ClothesTest(TestCase):
         self.client.force_login(usr)
         res4 = self.client.get(reverse('top'))
         self.assertIs(res4.status_code, 200)
+        self.assertContains(res4, 'Add new cloth')
+        self.assertContains(res4, 'detail')
         for n in range(1, 4):
             self.assertContains(res4, 'test{}'.format(n))
         for n in range(1, 4):
             res5 = self.client.get('/clothes/detail/{}'.format(n))
             self.assertIs(res5.status_code, 200)
             self.assertContains(res5, 'test{}'.format(n))
+            self.assertContains(res5, 'delete')
+            self.assertContains(res5, 'edit')
         res6 = self.client.get(reverse('post'))
         self.assertIs(res6.status_code, 200)
         self.assertContains(res6, 'Add')
@@ -91,27 +96,46 @@ class ClothesTest(TestCase):
             res7 = self.client.get('/clothes/edit/{}'.format(n))
             self.assertIs(res7.status_code, 200)
             self.assertContains(res7, 'test{}'.format(n))
+            self.assertContains(res7, 'edit')
         for n in range(1, 4):
             res8 = self.client.get('/clothes/delete/{}'.format(n))
             self.assertIs(res8.status_code, 200)
             self.assertContains(res8, 'test{}'.format(n))
+            self.assertContains(res8, 'delete')
         res8 = self.client.get(reverse('search'))
         self.assertIs(res8.status_code, 200)
+        self.assertContains(res8, 'search')
         res9 = self.client.get(reverse('wishlist'))
         self.assertIs(res9.status_code, 200)
+        self.assertContains(res9, 'Add WishList')
         for n in range(1, 3):
             self.assertContains(res9, 'test{}'.format(n))
+            self.assertContains(res9, 'detail')
         res10 = self.client.get(reverse('wishlist_add'))
         self.assertIs(res10.status_code, 200)
+        self.assertContains(res10, 'add')
         for n in range(1, 3):
             res11 = self.client.get('/clothes/wishlist_edit/{}'.format(n))
             self.assertIs(res11.status_code, 200)
             self.assertContains(res11, 'test{}'.format(n))
+            self.assertContains(res11, 'edit')
         for n in range(1, 3):
             res12 = self.client.get('/clothes/wishlist_delete/{}'.format(n))
             self.assertIs(res12.status_code, 200)
             self.assertContains(res12, 'test{}'.format(n))
+            self.assertContains(res12, 'delete')
         for n in range(1, 3):
             res13 = self.client.get('/clothes/wishlist_detail/{}'.format(n))
             self.assertIs(res13.status_code, 200)
             self.assertContains(res13, 'test{}'.format(n))
+            self.assertContains(res13, 'delete')
+            self.assertContains(res13, 'edit')
+
+class PostFormTests(TestCase):
+    def test_valid(self):
+        usr = User()
+        params = dict(owner=usr, cloth_name='test1', item_info=1, brand_name='test1', season='test1', cloth_size='test1', \
+            material='test1', price=1, buying_place='test1', buying_date=datetime.date.today(), post_images=get_image(1))
+        post = Post()
+        form = PostForm(params, instance=post)
+        self.assertTrue(form.is_valid())
