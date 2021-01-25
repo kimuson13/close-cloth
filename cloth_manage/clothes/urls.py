@@ -13,7 +13,6 @@ urlpatterns = [
     path('edit/<int:num>', views.edit, name='edit'),
     path('delete/<int:num>', views.delete, name='delete'),
     path('search', views.search, name='search'),
-    path('search/<int:num>', views.search, name='search'),
     path('wishlist', views.wishlist, name='wishlist'),
     path('wishlist/<int:num>', views.wishlist, name='wishlist'),
     path('wishlist_add', views.wishlist_add, name='wishlist_add'),

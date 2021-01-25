@@ -78,7 +78,29 @@ class ClothesTest(TestCase):
         self.client.force_login(usr)
         res4 = self.client.get(reverse('top'))
         self.assertIs(res4.status_code, 200)
-        res5 = self.client.get('/clothes/detail/1')
-        self.assertIs(res5.status_code, 200)
+        for n in range(1, 4):
+            res5 = self.client.get('/clothes/detail/{}'.format(n))
+            self.assertIs(res5.status_code, 200)
         res6 = self.client.get(reverse('post'))
         self.assertIs(res6.status_code, 200)
+        for n in range(1, 4):
+            res7 = self.client.get('/clothes/edit/{}'.format(n))
+            self.assertIs(res7.status_code, 200)
+        for n in range(1, 4):
+            res8 = self.client.get('/clothes/delete/{}'.format(n))
+            self.assertIs(res8.status_code, 200)
+        res8 = self.client.get(reverse('search'))
+        self.assertIs(res8.status_code, 200)
+        res9 = self.client.get(reverse('wishlist'))
+        self.assertIs(res9.status_code, 200)
+        res10 = self.client.get(reverse('wishlist_add'))
+        self.assertIs(res10.status_code, 200)
+        for n in range(1, 3):
+            res11 = self.client.get('/clothes/wishlist_edit/{}'.format(n))
+            self.assertIs(res11.status_code, 200)
+        for n in range(1, 3):
+            res12 = self.client.get('/clothes/wishlist_delete/{}'.format(n))
+            self.assertIs(res12.status_code, 200)
+        for n in range(1, 3):
+            res13 = self.client.get('/clothes/wishlist_detail/{}'.format(n))
+            self.assertIs(res13.status_code, 200)
