@@ -133,8 +133,7 @@ class ClothesTest(TestCase):
 
 class PostFormTests(TestCase):
     def test_valid(self):
-        usr = User()
-        params = dict(owner=usr, cloth_name='test1', item_info=1, brand_name='test1', season='test1', cloth_size='test1', \
+        params = dict(cloth_name='test1', item_info=1, brand_name='test1', season='test1', cloth_size='test1', \
             material='test1', price=1, buying_place='test1', buying_date=datetime.date.today(), post_images=get_image(1))
         post = Post()
         form = PostForm(params, instance=post)
