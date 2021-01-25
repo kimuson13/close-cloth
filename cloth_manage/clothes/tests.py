@@ -35,8 +35,8 @@ class ClothesTest(TestCase):
         return(usr)
     @classmethod
     def create_post(cls, usr):
-        Post(owner=usr, cloth_name='test', item_info=1, brand_name='test', season='test', cloth_size='test', \
-            material='test', price=1, buying_place='test', buying_date=datetime.date.today(), post_images=get_image(1)).save()
+        Post(owner=usr, cloth_name='test1', item_info=1, brand_name='test1', season='test1', cloth_size='test1', \
+            material='test1', price=1, buying_place='test1', buying_date=datetime.date.today(), post_images=get_image(1)).save()
         Post(owner=usr, cloth_name='test2', item_info=1, brand_name='test2', season='test2', cloth_size='test2', \
             material='test2', price=1, buying_place='test2', buying_date=datetime.date.today(), post_images=get_image(2)).save()
         Post(owner=usr, cloth_name='test3', item_info=1, brand_name='test3', season='test3', cloth_size='test3', \
@@ -45,7 +45,7 @@ class ClothesTest(TestCase):
             material='test4', price=1, buying_place='test4', buying_date=datetime.date.today(), post_images=get_image(4)).save()
     @classmethod
     def create_wish(cls, usr):
-        Wanted(owner=usr, wanted_cloth_name='test', wanted_brand_name='test', wanted_season='test', wanted_price=1, \
+        Wanted(owner=usr, wanted_cloth_name='test1', wanted_brand_name='test1', wanted_season='test1', wanted_price=1, \
             priority=1, wanted_images=get_image(5)).save()
         Wanted(owner=usr, wanted_cloth_name='test2', wanted_brand_name='test2', wanted_season='test2', wanted_price=1, \
             priority=1, wanted_images=get_image(6)).save()
@@ -79,28 +79,39 @@ class ClothesTest(TestCase):
         res4 = self.client.get(reverse('top'))
         self.assertIs(res4.status_code, 200)
         for n in range(1, 4):
+            self.assertContains(res4, 'test{}'.format(n))
+        for n in range(1, 4):
             res5 = self.client.get('/clothes/detail/{}'.format(n))
             self.assertIs(res5.status_code, 200)
+            self.assertContains(res5, 'test{}'.format(n))
         res6 = self.client.get(reverse('post'))
         self.assertIs(res6.status_code, 200)
+        self.assertContains(res6, 'Add')
         for n in range(1, 4):
             res7 = self.client.get('/clothes/edit/{}'.format(n))
             self.assertIs(res7.status_code, 200)
+            self.assertContains(res7, 'test{}'.format(n))
         for n in range(1, 4):
             res8 = self.client.get('/clothes/delete/{}'.format(n))
             self.assertIs(res8.status_code, 200)
+            self.assertContains(res8, 'test{}'.format(n))
         res8 = self.client.get(reverse('search'))
         self.assertIs(res8.status_code, 200)
         res9 = self.client.get(reverse('wishlist'))
         self.assertIs(res9.status_code, 200)
+        for n in range(1, 3):
+            self.assertContains(res9, 'test{}'.format(n))
         res10 = self.client.get(reverse('wishlist_add'))
         self.assertIs(res10.status_code, 200)
         for n in range(1, 3):
             res11 = self.client.get('/clothes/wishlist_edit/{}'.format(n))
             self.assertIs(res11.status_code, 200)
+            self.assertContains(res11, 'test{}'.format(n))
         for n in range(1, 3):
             res12 = self.client.get('/clothes/wishlist_delete/{}'.format(n))
             self.assertIs(res12.status_code, 200)
+            self.assertContains(res12, 'test{}'.format(n))
         for n in range(1, 3):
             res13 = self.client.get('/clothes/wishlist_detail/{}'.format(n))
             self.assertIs(res13.status_code, 200)
+            self.assertContains(res13, 'test{}'.format(n))
