@@ -3,10 +3,11 @@ from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from django.core.files import File
 from .models import Post, Wanted
 import datetime, random
 from PIL import Image, ImageDraw, ImageFont
-from .forms import PostForm, WantedForm
+from .forms import PostForm, WantedForm, NameSearchForm
 # Create your tests here.
 colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 0, 0), (255, 255, 255)]
 def get_image(n):
@@ -131,10 +132,8 @@ class ClothesTest(TestCase):
             self.assertContains(res13, 'delete')
             self.assertContains(res13, 'edit')
 
-class PostFormTests(TestCase):
-    def test_valid(self):
-        params = dict(cloth_name='test1', item_info=1, brand_name='test1', season='test1', cloth_size='test1', \
-            material='test1', price=1, buying_place='test1', buying_date=datetime.date.today(), post_images=get_image(1))
-        post = Post()
-        form = PostForm(params, instance=post)
+class NameSearchFormTest(TestCase):
+    def test_form(self):
+        data = {"search":"test"}
+        form = NameSearchForm(data)
         self.assertTrue(form.is_valid())
