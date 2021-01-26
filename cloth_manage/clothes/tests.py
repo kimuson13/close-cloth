@@ -137,3 +137,31 @@ class NameSearchFormTest(TestCase):
         data = {"search":"test"}
         form = NameSearchForm(data)
         self.assertTrue(form.is_valid())
+
+class PostFormTest(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        usr= cls.create_user()
+    @classmethod
+    def create_user(cls):
+        User(username="test", password="test", is_staff=True, is_active=True).save()
+        usr = User.objects.filter(username='test').first()
+        return(usr)
+    def test_form(self):
+        usr = User.objects.get(id=1)
+        data = {
+            "owner":usr,
+            "cloth_name":"test1",
+            "item_info":1,
+            "brand_name":"test1",
+            "season":"test1",
+            "cloth_size":"test1",
+            "material":"test1",
+            "price":1,
+            "buying_place":"test1",
+            "buying_date":datetime.date.today(),
+            "post_images":get_image(8)
+        }
+        form = PostForm(data)
+        self.assertTrue(form.is_valid())

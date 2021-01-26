@@ -18,7 +18,8 @@ class UserCreateForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('cloth_name', 'item_info', 'brand_name', 'season', 'cloth_size', 'material', 'price', 'buying_place', 'buying_date', 'post_images')
+        fields = ('cloth_name', 'item_info', 'brand_name', 'season', 'cloth_size', 'material', 'price', 'buying_place', \
+            'buying_date', 'post_images')
         widgets = {
             'buying_date': datetimepicker.DatePickerInput(
                 format='%Y-%m-%d',
