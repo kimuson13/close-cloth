@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.test import TestCase, Client
+from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
@@ -10,6 +11,7 @@ from io import BytesIO
 import datetime, random
 from PIL import Image, ImageDraw, ImageFont
 from .forms import PostForm, WantedForm, NameSearchForm, UserCreateForm, LoginForm
+from .views import post, wishlist_add
 # Create your tests here.
 colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 0, 0), (255, 255, 255)]
 def get_image(n):
