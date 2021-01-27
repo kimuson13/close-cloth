@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.core.files import File
+from django.core.files.uploadedfile import SimpleUploadedFile
 from .models import Post, Wanted
+from io import BytesIO
 import datetime, random
 from PIL import Image, ImageDraw, ImageFont
 from .forms import PostForm, WantedForm, NameSearchForm, UserCreateForm, LoginForm
@@ -23,6 +25,38 @@ def get_image(n):
     filename = "/sample_{}.jpg".format(n)
     img.save("media"+filename)
     return filename
+
+def get_post_image_dict():
+    img_file = BytesIO()
+    img = Image.new('RGBA', size=(10,10), color=(255, 255, 255))
+    img.save(img_file, 'png')
+    img_file.name = 'test_post_img.png'
+    img_file.seek(0)
+    img_dict = {
+        "post_images": SimpleUploadedFile(
+            img_file.name,
+            img_file.read(),
+            content_type='image/png'
+        )
+    }
+    return img_dict
+
+def get_wanted_image_dict():
+    img_file = BytesIO()
+    img = Image.new('RGBA', size=(10,10), color=(255, 255, 255))
+    img.save(img_file, 'png')
+    img_file.name = 'test_wanted_img.png'
+    img_file.seek(0)
+    img_dict = {
+        "wanted_images": SimpleUploadedFile(
+            img_file.name,
+            img_file.read(),
+            content_type='image/png'
+        )
+    }
+    return img_dict
+
+
 class ClothesTest(TestCase):
     @classmethod
     def setUpClass(cls):
@@ -138,23 +172,15 @@ class NameSearchFormTest(TestCase):
         form = NameSearchForm(data)
         self.assertTrue(form.is_valid())
 
-class LoginFormTest(TestCase):
-    def test_form(self):
-        data = {
-            "username":"test",
-            "password":"test"
-        }
-        form = LoginForm(data)
-        self.assertTrue(form.is_valid())
-
 class UserCreateFormTest(TestCase):
     def test_form(self):
         data = {
             "username":"test",
-            "password1":"test11",
-            "password2":"test11"
+            "password1":"kimuson8976",
+            "password2":"kimuson8976"
         }
         form = UserCreateForm(data)
+        print(form.errors)
         self.assertTrue(form.is_valid())
 
 class PostFormTest(TestCase):
@@ -180,7 +206,33 @@ class PostFormTest(TestCase):
             "price":1,
             "buying_place":"test1",
             "buying_date":datetime.date.today(),
-            "post_images":get_image(8)
         }
-        form = PostForm(data)
+        img_dict = get_post_image_dict()
+        form = PostForm(data, img_dict)
+        print(form.errors)
+        self.assertTrue(form.is_valid())
+
+class WantedFormTest(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        usr= cls.create_user()
+    @classmethod
+    def create_user(cls):
+        User(username="test", password="test", is_staff=True, is_active=True).save()
+        usr = User.objects.filter(username='test').first()
+        return(usr)
+    def test_form(self):
+        usr = User.objects.filter(username='test').first()
+        data = {
+            "owner":usr.id,
+            "wanted_cloth_name":"test",
+            "wanted_brand_name":"test",
+            "wanted_season":"test",
+            "wanted_price":1,
+            "priority":1
+        }
+        img_dict = get_wanted_image_dict()
+        form = WantedForm(data, img_dict)
+        print(form.errors)
         self.assertTrue(form.is_valid())
