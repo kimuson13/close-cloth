@@ -198,7 +198,7 @@ class PostFormTest(TestCase):
     def test_form(self):
         usr = User.objects.filter(username='test').first()
         data = {
-            "owner":usr.id,
+            "owner":usr,
             "cloth_name":"test1",
             "item_info":1,
             "brand_name":"test1",
@@ -227,7 +227,7 @@ class WantedFormTest(TestCase):
     def test_form(self):
         usr = User.objects.filter(username='test').first()
         data = {
-            "owner":usr.id,
+            "owner":usr,
             "wanted_cloth_name":"test",
             "wanted_brand_name":"test",
             "wanted_season":"test",
