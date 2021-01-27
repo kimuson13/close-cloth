@@ -236,3 +236,29 @@ class WantedFormTest(TestCase):
         form = WantedForm(data, img_dict)
         print(form.errors)
         self.assertTrue(form.is_valid())
+
+class LoginFormTest(TestCase):
+    def setUp(self):
+        User.objects.create_user(username='test', password='kimuson9877')
+    def LoginFormTestNameError(self):
+        data = {
+            "username": "error",
+            "password": "kimuson9877"
+        }
+        form = LoginForm(data)
+        self.assertFalse(form.is_valid())
+    def LoginFormTestPassError(self):
+        data = {
+            "username": "test",
+            "password": "error"
+        }
+        form = LoginForm(data)
+        self.assertFalse(form.is_valid())
+    def LoginFormTrue(self):
+        data = {
+            "username": "test",
+            "password": "kimuson9877"
+        }
+        form = LoginForm(data)
+        print(form.errors)
+        self.assertTrue(form.is_valid())
