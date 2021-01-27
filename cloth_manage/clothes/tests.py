@@ -264,3 +264,33 @@ class LoginFormTest(TestCase):
         form = LoginForm(data)
         print(form.errors)
         self.assertTrue(form.is_valid())
+
+class PostClothesTest(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        usr= cls.create_user()
+    @classmethod
+    def create_user(cls):
+        User(username="test", password="test", is_staff=True, is_active=True).save()
+        usr = User.objects.filter(username='test').first()
+        return(usr)
+    def test_cloth_post(self):
+        usr = User.objects.filter(username='test').first()
+        self.client.force_login(usr)
+        data = {
+            "owner":usr,
+            "cloth_name":"test1",
+            "item_info":1,
+            "brand_name":"test1",
+            "season":"test1",
+            "cloth_size":"test1",
+            "material":"test1",
+            "price":1,
+            "buying_place":"test1",
+            "buying_date":datetime.date.today(),
+        }
+        img_dict = get_post_image_dict()
+        data = data | img_dict
+        response = self.client.post('/clothes/post', data)
+        self.assertEqual(response.status_code, 302)
