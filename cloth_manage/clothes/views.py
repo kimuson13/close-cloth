@@ -150,9 +150,9 @@ def search(request, num=1):
             if n == 11:
                 break
         
-        data = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info__contains=search)).order_by('buying_date').reverse()
+        data = Post.objects.filter(owner=user).filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info__contains=search)).order_by('buying_date').reverse()
         msg = 'Result:' + str(data.count())
-        price = Post.objects.filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info__contains=search)).values_list('price', flat=True)
+        price = Post.objects.filter(owner=user).filter(Q(brand_name__icontains=search)|Q(buying_place__icontains=search)|Q(item_info__contains=search)).values_list('price', flat=True)
         sum_price = sum(price)
     else:
         msg = 'Search words...'

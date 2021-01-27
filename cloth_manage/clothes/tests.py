@@ -7,7 +7,7 @@ from django.core.files import File
 from .models import Post, Wanted
 import datetime, random
 from PIL import Image, ImageDraw, ImageFont
-from .forms import PostForm, WantedForm, NameSearchForm
+from .forms import PostForm, WantedForm, NameSearchForm, UserCreateForm, LoginForm
 # Create your tests here.
 colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 0, 0), (255, 255, 255)]
 def get_image(n):
@@ -136,6 +136,25 @@ class NameSearchFormTest(TestCase):
     def test_form(self):
         data = {"search":"test"}
         form = NameSearchForm(data)
+        self.assertTrue(form.is_valid())
+
+class LoginFormTest(TestCase):
+    def test_form(self):
+        data = {
+            "username":"test",
+            "password":"test"
+        }
+        form = LoginForm(data)
+        self.assertTrue(form.is_valid())
+
+class UserCreateFormTest(TestCase):
+    def test_form(self):
+        data = {
+            "username":"test",
+            "password1":"test11",
+            "password2":"test11"
+        }
+        form = UserCreateForm(data)
         self.assertTrue(form.is_valid())
 
 class PostFormTest(TestCase):
