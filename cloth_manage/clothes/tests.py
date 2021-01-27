@@ -294,6 +294,8 @@ class PostClothesTest(TestCase):
         data = data | img_dict
         response = self.client.post(reverse('post'), data)
         self.assertEqual(response.status_code, 302)
+        delete_response = self.client.delete('/clothes/delete/1', data)
+        self.assertEqual(delete_response.status_code, 200)
 
 class PostWishListTest(TestCase):
     @classmethod
@@ -319,3 +321,5 @@ class PostWishListTest(TestCase):
         data = data | img_dict
         response = self.client.post(reverse('wishlist_add'), data)
         self.assertEqual(response.status_code, 302)
+        delete_response = self.client.delete('/clothes/wishlist_delete/1', data)
+        self.assertEqual(delete_response.status_code, 302)
