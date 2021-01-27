@@ -149,9 +149,9 @@ class PostFormTest(TestCase):
         usr = User.objects.filter(username='test').first()
         return(usr)
     def test_form(self):
-        usr = User.objects.get(id=1)
+        usr = User.objects.filter(username='test').first()
         data = {
-            "owner":usr,
+            "owner":usr.id,
             "cloth_name":"test1",
             "item_info":1,
             "brand_name":"test1",
