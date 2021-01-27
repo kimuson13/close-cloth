@@ -292,5 +292,30 @@ class PostClothesTest(TestCase):
         }
         img_dict = get_post_image_dict()
         data = data | img_dict
-        response = self.client.post('/clothes/post', data)
+        response = self.client.post(reverse('post'), data)
+        self.assertEqual(response.status_code, 302)
+
+class PostWishListTest(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        usr= cls.create_user()
+    @classmethod
+    def create_user(cls):
+        User(username="test", password="test", is_staff=True, is_active=True).save()
+        usr = User.objects.filter(username='test').first()
+        return(usr)
+    def test_wishlist_post(self):
+        usr = User.objects.filter(username='test').first()
+        data = {
+            "owner":usr,
+            "wanted_cloth_name":"test",
+            "wanted_brand_name":"test",
+            "wanted_season":"test",
+            "wanted_price":1,
+            "priority":1
+        }
+        img_dict = get_wanted_image_dict()
+        data = data | img_dict
+        response = self.client.post(reverse('wishlist_add'), data)
         self.assertEqual(response.status_code, 302)
