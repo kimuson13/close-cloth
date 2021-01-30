@@ -172,7 +172,7 @@ def search(request, num=1):
 @login_required(login_url='/signin/')
 def wishlist(request, num=1):
     user = request.user
-    data = Wanted.objects.order_by('priority')
+    data = Wanted.objects.filter(owner=user).order_by('priority')
     price = Wanted.objects.filter(owner=user).values_list('wanted_price', flat=True)
     sum_price = sum(price)
     page = Paginator(data, 5)
