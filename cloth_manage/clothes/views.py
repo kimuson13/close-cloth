@@ -50,8 +50,8 @@ def index(request):
 
 @login_required(login_url='/signin/')
 def top(request, num=1):
-    data = Post.objects.order_by('buying_date').reverse()
     user = request.user
+    data = Post.objects.filter(owner=user).order_by('buying_date').reverse()
     price = Post.objects.filter(owner=user).values_list('price', flat=True)
     sum_price = sum(price)
     page = Paginator(data, 5)
