@@ -8,13 +8,21 @@
     </head>
     <body class="container">
         <h1 class="display-2 text-center text-primary">Welcome to Close Cloth!!</h1>
-        <div class="d-inline">
-            <h1 class="display-4 text-center">はじめての方はこちら!</h1>
-            <a class="btn btn-info w-100" href="{% url 'signup' %}">新規登録</a>
+        <br><br>
+        <div>
+            <h1 class="display-3"><span class="text-primary">Close Cloth</span>とは？</h1>
+            <p class="h3 text-justify text-wrap">服を多く持っていると、「これいつどこで買ったっけ？」や「これいくらしたかな？」というように、記憶があいまいになることがあると思います。そのようなことを防ぎ、服に対してより愛着を持てるようにとこのアプリを開発しました。</p>
+            <h1>何ができるの？</h1>
+            <p>Close Clothでは服を管理することができます。服をアプリ上に追加していくことだけであなただけの服図鑑を作ることができます。また、どのブランドの服をどれぐらい持っているか、どのショップでどれくらい購入したか、パンツはどれくらい持っているか等を検索できます。</p>
         </div>
         <div class="d-inline">
+            <h1 class="display-4 text-center">はじめての方はこちら!</h1>
+            <a class="btn btn-info w-100 btn-lg" href="{% url 'signup' %}">新規登録</a>
+        </div>
+        <br><br>
+        <div class="d-inline">
             <h1 class="display-4 text-center">ログインはこちら!</h1>
-            <a class="btn btn-primary w-100" href="{% url 'signin' %}">ログイン</a>
+            <a class="btn btn-primary w-100 btn-lg" href="{% url 'signin' %}">ログイン</a>
         </div>
     </body>
 </html>
