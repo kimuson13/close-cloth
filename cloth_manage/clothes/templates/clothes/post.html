@@ -3,13 +3,73 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary text-center">Add a Cloth</h1>
+<h1 class="display-1 text-primary text-center">Add Cloth</h1>
 {% endblock %}
 
 {% block content %}
-<form enctype="multipart/form-data" action="{% url 'post' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add" class="btn btn-primary w-100">
+<form enctype="multipart/form-data" action="{% url 'post' %}" method="POST" class="form-group">
+        {% csrf_token %}
+        <div class="form-control-lg">
+            {{ form.cloth_name.label_tag}}
+            <br>
+            {{ form.cloth_name }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.item_info.label_tag}}
+            <br>
+            {{ form.item_info }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.brand_name.label_tag}}
+            <br>
+            {{ form.brand_name }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.season.label_tag}}
+            <br>
+            {{ form.season }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.cloth_size.label_tag}}
+            <br>
+            {{ form.cloth_size }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.material.label_tag}}
+            <br>
+            {{ form.material }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.price.label_tag}}
+            <br>
+            {{ form.price }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.buying_place.label_tag}}
+            <br>
+            {{ form.buying_place }}
+        </div>
+        <br><br>
+        <div class="form-control-lg">
+            {{ form.buying_date.label_tag}}
+            {{ form.buying_date }}
+        </div>
+        <br><br>
+        <div class="form-group">
+            <div class="form-control-lg">
+                {{ form.post_images.label_tag}}
+            </div>
+            <div class="btn btn-lg">
+                {{ form.post_images }}
+            </div>
+        </div>
+        <input type="submit" value="Add" class="btn btn-primary w-100 btn-lg">
 </form>
 {% endblock %}

@@ -3,14 +3,14 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-primary text-center">Close Cloth</h1>
+<h1 class="display-1 text-primary text-center">Close Cloth</h1>
 {% endblock %}
 
 {% block content %}
-<a class="btn btn-primary w-100" href="{% url 'post' %}">Add new cloth</a>
-<h1 class="display-3 text-primary text-center">All clothes!</h1>
-<table class="table">
-    <tr>
+<a class="btn btn-primary w-100 btn-lg" href="{% url 'post' %}">Add new cloth</a>
+<h1 class="display-2 text-primary text-center">All clothes!</h1>
+<table class="table table-hover">
+    <tr class="thead-dark">
         <th>名称</th>
         <th>種類</th>
         <th>ブランド名</th>
@@ -19,17 +19,15 @@
     </tr>
     {% for item in data %}
     <tr>
-        {% if login_user == item.owner %}
         <td>{{item.cloth_name}}</td>
         <td>{{item.get_item_info_display}}</td>
         <td>{{item.brand_name}}</td>
         <td>{{item.price}}円</td>
         <td><a class="btn btn-secondary" href="{% url 'detail' item.id %}">Detail</a></td>
-        {% endif %}
     </tr>
     {% endfor %}
 </table>
-<ul class="pagination justify-content-center">
+<ul class="pagination pagination-lg justify-content-center">
     {% if data.has_previous %}
     <li class="page-item">
         <a class="page-link" href="{% url 'top' %}">&laquo; First</a>
@@ -64,11 +62,11 @@
     </li>
     {% endif %}
 </ul>
-<p class="h2 text-secondary">服の合計金額：{{sum_price}}円</p>
+<p class="display-4 text-secondary text-right">服の合計金額：{{sum_price}}円</p>
 <br>
-<h1 class="h4 text-center">検索はこちらから</h1>
-<a class="btn btn-success w-100" href="{% url 'search' %}">Search</a>
-<br>
-<h1 class="h4 text-center">WishListはこちらから</h1>
-<a class="btn btn-info w-100" href="{% url 'wishlist' %}">WishList</a>
+<h1 class="display-4 text-center"><span class="text-success">検索</span>はこちらから</h1>
+<a class="btn btn-success w-100 btn-lg" href="{% url 'search' %}">Search</a>
+<br><br>
+<h1 class="display-4 text-center"><span class="text-info">WishList</span>はこちらから</h1>
+<a class="btn btn-info w-100 btn-lg" href="{% url 'wishlist' %}">WishList</a>
 {% endblock %}
