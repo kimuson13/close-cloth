@@ -3,26 +3,38 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-secondary text-center">{{data.wanted_cloth_name}}'s Detail</h1>
+<h1 class="display-2 text-secondary text-center">{{data.wanted_cloth_name}}の詳細</h1>
 {% endblock %}
 
 {% block content %}
-<img src="{{ MEDIA_URL }}{{ data.wanted_images }}" class="img-fluid">
+<img src="{{ MEDIA_URL }}{{ data.wanted_images }}" class="img-fluid d-block mx-auto">
 <table class="table">
         <tr>
-            <th>ブランド名：{{data.wanted_brand_name}}</th>
+            <th class="h2">ブランド名：{{data.wanted_brand_name}}</th>
         </tr>
         <tr>
-            <th>優先度：{{data.get_priority_display}}</th>
+            <th class="h2">
+                優先度：
+                    {% if data.priority == 1 %}
+                    <span class="text-danger">{{data.get_priority_display}}</span>
+                    {% elif data.priority == 2 %}
+                    <span class="text-warning">{{data.get_priority_display}}</span>
+                    {% else %}
+                    <span>{{data.get_priority_display}}</span>
+                    {% endif %}
+            </th>
         </tr>
         <tr>
-            <th>シーズン：{{data.wanted_season}}</th>
+            <th class="h2">シーズン：{{data.wanted_season}}</th>
         </tr>
         <tr>
-            <th>予想価格：{{data.wanted_price}}円</th>
+            <th class="h2">予想価格：{{data.wanted_price}}円</th>
         </tr>
 </table>
-<a class="btn btn-warning w-100" href="{% url 'wishlist_edit' data.id %}">Edit</a>
-<a class="btn btn-danger w-100" href="{% url 'wishlist_delete' data.id %}">Delete</a>
-<a class="btn btn-primary w-100" href="{% url 'wishlist' %}">back to WishList TOP</a>
+<div class="btn-group w-100">
+    <a class="btn btn-warning btn-lg w-50" href="{% url 'wishlist_edit' data.id %}">Edit</a>
+    <a class="btn btn-danger btn-lg w-50" href="{% url 'wishlist_delete' data.id %}">Delete</a>
+</div>
+<br><br>
+<a class="btn btn-info btn-lg w-100" href="{% url 'wishlist' %}">back to WishList TOP</a>
 {% endblock %}

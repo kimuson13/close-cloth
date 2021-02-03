@@ -3,40 +3,39 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-info text-center">WishList</h1>
+<h1 class="display-1 text-info text-center">WishList</h1>
 {% endblock %}
 
 {% block content %}
-<p class="h4 text-info text-center">WishListの追加はこちらから</p>
-<a class="btn btn-info w-100" href="{% url 'wishlist_add' %}">Add WishList</a>
-<p class="h4">WishList一覧</p>
-<table class="table">
-    <tr>
-        <th>名称</th>
-        <th>ブランド名</th>
-        <th>優先度</th>
-        <th>予想価格</th>
-        <th></th>
+<p class="display-3 text-info text-center">WishListの追加はこちらから</p>
+<a class="btn btn-info w-100 btn-lg" href="{% url 'wishlist_add' %}">Add WishList</a>
+<br><br>
+<p class="display-3 text-info">All WishLists</p>
+<table class="table table-hover">
+    <tr class="thead-dark">
+        <th class="h3">名称</th>
+        <th class="h3">ブランド名</th>
+        <th class="h3">優先度</th>
+        <th class="h3">予想価格</th>
+        <th class="h3"></th>
     </tr>
     {% for item in data %}
     <tr>
-        {% if login_user == item.owner %}
-        <td>{{item.wanted_cloth_name}}</td>
-        <td>{{item.wanted_brand_name}}</td>
+        <td class="h3">{{item.wanted_cloth_name}}</td>
+        <td class="h3">{{item.wanted_brand_name}}</td>
         {% if item.priority == 1 %}
-        <td class="text-danger">{{item.get_priority_display}}</td>
+        <td class="text-danger h3">{{item.get_priority_display}}</td>
         {% elif item.priority == 2 %}
-        <td class="text-warning">{{item.get_priority_display}}</td>
+        <td class="text-warning h3">{{item.get_priority_display}}</td>
         {% else %}
-        <td>{{item.get_priority_display}}</td>
+        <td class="h3">{{item.get_priority_display}}</td>
         {% endif %}
-        <td>{{item.wanted_price}}円</td>
-        <td><a class="btn btn-secondary" href="{% url 'wishlist_detail' item.id %}">Detail</a></td>
-        {% endif %}
+        <td class="h3">{{item.wanted_price}}円</td>
+        <td><a class="btn btn-secondary btn-lg" href="{% url 'wishlist_detail' item.id %}">Detail</a></td>
     </tr>
     {% endfor %}
 </table>
-<ul class="pagination justify-content-center">
+<ul class="pagination pagination-lg justify-content-center">
     {% if data.has_previous %}
     <li class="page-item">
         <a class="page-link" href="{% url 'wishlist' %}">&laquo; First</a>
@@ -71,5 +70,7 @@
     </li>
     {% endif %}
 </ul>
-<p class="h2 text-secondary">予想額合計：{{sum_price}}円</p>
+<p class="display-4 text-secondary text-right">予想額合計：{{sum_price}}円</p>
+<br>
+<a href="{% url 'top' %}" class="btn btn-primary btn-lg w-100">Back to TOP</a>
 {% endblock %}
