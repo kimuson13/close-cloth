@@ -3,42 +3,43 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-secondary text-center">{{data.cloth_name}}の詳細</h1>
+<h1 class="display-1 text-secondary text-center">{{data.cloth_name}}の詳細</h1>
 {% endblock %}
 
 {% block content %}
-<img src="{{ MEDIA_URL }}{{ data.post_images }}" class="img-fluid">
+<img src="{{ MEDIA_URL }}{{ data.post_images }}" class="img-fluid d-block mx-auto">
 <table class="table">
         <tr>
-            <th>種類：{{data.get_item_info_display}}</th>
+            <th class="h2">種類：{{data.get_item_info_display}}</th>
         </tr>
         <tr>
-            <th>ブランド名：{{data.brand_name}}</th>
+            <th class="h2">ブランド名：{{data.brand_name}}</th>
         </tr>
         <tr>
-            <th>シーズン：{{data.season}}</th>
+            <th class="h2">シーズン：{{data.season}}</th>
         </tr>
         <tr>
-            <th>サイズ：{{data.cloth_size}}</th>
+            <th class="h2">サイズ：{{data.cloth_size}}</th>
         </tr>
         <tr>
-            <th>素材：{{data.material}}</th>
+            <th class="h2">素材：{{data.material}}</th>
         </tr>
         <tr>
-            <th>値段：{{data.price}}円</th>
+            <th class="h2">値段：{{data.price}}円</th>
         </tr>
         <tr>
-            <th>購入場所：{{data.buying_place}}</th>
+            <th class="h2">購入場所：{{data.buying_place}}</th>
         </tr>
         <tr>
-            <th>購入日時：{{data.buying_date}}</th>
+            <th class="h2">購入日時：{{data.buying_date}}</th>
         </tr>
 </table>
-<a class="btn btn-warning w-100" href="{% url 'edit' data.id %}">Edit</a>
-<br>
-<a class="btn btn-danger w-100" href="{% url 'delete' data.id %}">Delete</a>
-<br>
-<a class="btn btn-primary w-100" href="{% url 'top' %}">back to TOP</a>
+<div class="btn-group btn-group-lg w-100">
+    <a class="btn btn-warning w-50 btn-lg" href="{% url 'edit' data.id %}">Edit</a>
+    <a class="btn btn-danger w-50 btn-lg" href="{% url 'delete' data.id %}">Delete</a>
+</div>
+<br><br>
+<a class="btn btn-primary w-100 btn-lg" href="{% url 'top' %}">back to TOP</a>
 {% endblock %}
 
 
