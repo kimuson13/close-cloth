@@ -11,19 +11,19 @@
 <h1 class="display-2 text-primary text-center">All clothes!</h1>
 <table class="table table-hover">
     <tr class="thead-dark">
-        <th>名称</th>
-        <th>種類</th>
-        <th>ブランド名</th>
-        <th>値段</th>
-        <th></th>
+        <th class="h2">名称</th>
+        <th class="h2">種類</th>
+        <th class="h2">ブランド名</th>
+        <th class="h2">値段</th>
+        <th class="h2"></th>
     </tr>
     {% for item in data %}
     <tr>
-        <td>{{item.cloth_name}}</td>
-        <td>{{item.get_item_info_display}}</td>
-        <td>{{item.brand_name}}</td>
-        <td>{{item.price}}円</td>
-        <td><a class="btn btn-secondary" href="{% url 'detail' item.id %}">Detail</a></td>
+        <td class="h2">{{item.cloth_name}}</td>
+        <td class="h2">{{item.get_item_info_display}}</td>
+        <td class="h2">{{item.brand_name}}</td>
+        <td class="h2">{{item.price}}円</td>
+        <td><a class="btn btn-secondary btn-lg" href="{% url 'detail' item.id %}">Detail</a></td>
     </tr>
     {% endfor %}
 </table>
@@ -64,9 +64,9 @@
 </ul>
 <p class="display-4 text-secondary text-right">服の合計金額：{{sum_price}}円</p>
 <br>
-<h1 class="display-4 text-center"><span class="text-success">検索</span>はこちらから</h1>
+<h1 class="display-3 text-center"><span class="text-success">検索</span>はこちらから</h1>
 <a class="btn btn-success w-100 btn-lg" href="{% url 'search' %}">Search</a>
 <br><br>
-<h1 class="display-4 text-center"><span class="text-info">WishList</span>はこちらから</h1>
+<h1 class="display-3 text-center"><span class="text-info">WishList</span>はこちらから</h1>
 <a class="btn btn-info w-100 btn-lg" href="{% url 'wishlist' %}">WishList</a>
 {% endblock %}
