@@ -7,15 +7,15 @@
 {% endblock %}
 
 {% block content %}
+<img src="{{ MEDIA_URL }}{{ obj.post_images }}" class="img-fluid d-block mx-auto">
 <form enctype="multipart/form-data" action="{% url 'edit' id %}" method="POST">
     {% csrf_token %}
-    <table>
+    <table class="table">
         {{ form.as_table }}
-        <tr>
-            <th><td>
-                <input type="submit" value="Edit" class="btn btn-warning w-100">
-            </td></th>
-        </tr>
     </table>
+    <div class="btn-group btn-group-lg w-100">
+        <a href="{% url 'detail' id %}" class="btn btn-secondary btn-lg w-25">Back to Detail</a>
+        <input type="submit" value="Edit" class="btn btn-warning btn-lg w-75">
+    </div>
 </form>
 {% endblock %}

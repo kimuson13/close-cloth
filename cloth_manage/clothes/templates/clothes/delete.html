@@ -7,37 +7,38 @@
 {% endblock %}
 
 {% block content %}
-<img src="{{ MEDIA_URL }}{{obj.post_images}}" class="img-fluid">
+<img src="{{ MEDIA_URL }}{{obj.post_images}}" class="img-fluid d-block mx-auto">
 <table class="table">
     <tr>
-        <th>種類：{{obj.get_item_info_display}}</th>
+        <th class="h2">種類：{{obj.get_item_info_display}}</th>
     </tr>
     <tr>
-        <th>ブランド名：{{obj.brand_name}}</th>
+        <th class="h2">ブランド名：{{obj.brand_name}}</th>
     </tr>
     <tr>
-        <th>シーズン：{{obj.season}}</th>
+        <th class="h2">シーズン：{{obj.season}}</th>
     </tr>
     <tr>
-        <th>サイズ：{{obj.cloth_size}}</th>
+        <th class="h2">サイズ：{{obj.cloth_size}}</th>
     </tr>
     <tr>
-        <th>素材：{{obj.material}}</th>
+        <th class="h2">素材：{{obj.material}}</th>
     </tr>
     <tr>
-        <th>値段：{{obj.price}}</th>
+        <th class="h2">値段：{{obj.price}}円</th>
     </tr>
     <tr>
-        <th>購入場所：{{obj.buying_place}}</th>
+        <th class="h2">購入場所：{{obj.buying_place}}</th>
     </tr>
     <tr>
-        <th>購入日時：{{obj.buying_date}}</th>
+        <th class="h2">購入日時：{{obj.buying_date}}</th>
     </tr>
-    <form action="{% url 'delete' id %}" method="POST">
-        {% csrf_token %}
-        <tr><th></th><td>
-            <input type="submit" value="Delete" class="btn btn-danger w-100">
-        </td></tr>
-    </form>
 </table>
+<form action="{% url 'delete' id %}" method="POST">
+    {% csrf_token %}
+    <div class="btn-group btn-group-lg w-100">
+        <a class="btn btn-lg btn-secondary w-25" href="{% url 'detail' id %}">Back to Detail</a>
+        <input type="submit" value="Delete" class="btn btn-danger w-75 btn-lg">
+    </div>
+</form>
 {% endblock %}
