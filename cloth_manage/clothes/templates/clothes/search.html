@@ -3,38 +3,40 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-success text-center">Search Cloth</h1>
+<h1 class="display-1 text-success text-center">Search Cloth</h1>
 {% endblock %}
 
 {% block content %}
-<p class="h4">{{message|safe}}</p>
+<p class="h1">{{message|safe}}</p>
 <form action="{% url 'search' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <tr><th></th><td>
-        <input type="submit" value="Search" class="btn btn-success w-100">
+        <input type="submit" value="Search" class="btn btn-success w-100 btn-lg">
     </td></tr>
 </form>
-<table class="table">
-    <tr>
-        <th>名称</th>
-        <th>種類</th>
-        <th>ブランド名</th>
-        <th>値段</th>
+<br>
+<table class="table table-hover">
+    <tr class="thead-dark">
+        <th class="h3">名称</th>
+        <th class="h3">種類</th>
+        <th class="h3">ブランド名</th>
+        <th class="h3">値段</th>
+        <th></th>
     </tr>
     {% for item in data %}
     <tr>
         {% if login_user == item.owner %}
-        <td>{{item.cloth_name}}</td>
-        <td>{{item.get_item_info_display}}</td>
-        <td>{{item.brand_name}}</td>
-        <td>{{item.price}}</td>
-        <td><a class="btn btn-secondary w-100" href="{% url 'detail' item.id %}">Detail</a></td>
+        <td class="h3">{{item.cloth_name}}</td>
+        <td class="h3">{{item.get_item_info_display}}</td>
+        <td class="h3">{{item.brand_name}}</td>
+        <td class="h3">{{item.price}}</td>
+        <td><a class="btn btn-secondary w-100 btn-lg" href="{% url 'detail' item.id %}">Detail</a></td>
         {% endif %}
     </tr>
     {% endfor %}
 </table>
-<p class="h2 text-secondary">服の合計金額：{{sum_price}}円</p>
+<p class="display-4 text-secondary text-right">服の合計金額：{{sum_price}}円</p>
 <br>
-<a class="btn btn-primary w-100" href="{% url 'top' %}">TOPに戻る</a>
+<a class="btn btn-primary w-100 btn-lg" href="{% url 'top' %}">TOPに戻る</a>
 {% endblock %}
