@@ -227,6 +227,7 @@ def wishlist_edit(request, num):
         wanted.save()
         return redirect(to='/clothes/wishlist')
     params = {
+        'obj': obj,
         'title': 'wishlist_edit',
         'id': num,
         'form': WantedForm(instance=obj),

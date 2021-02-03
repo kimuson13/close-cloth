@@ -3,19 +3,19 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-warning text-center"> Edit {{obj.wanted_cloth_name}}</h1>
+<h1 class="display-2 text-warning text-center"> {{obj.wanted_cloth_name}}の編集</h1>
 {% endblock %}
 
 {% block content %}
+<img src="{{ MEDIA_URL }}{{ obj.wanted_images }}" class="img-fluid d-block mx-auto">
 <form enctype="multipart/form-data" action="{% url 'wishlist_edit' id %}" method="POST">
     {% csrf_token %}
-    <table>
+    <table class="table">
         {{ form.as_table }}
-        <tr>
-            <th><td>
-                <input type="submit" value="Edit" class="btn btn-warning w-100">
-            </td></th>
-        </tr>
     </table>
+    <div class="btn-group btn-group-lg w-100">
+        <a href="{% url 'wishlist_detail' id %}" class="btn btn-secondary w-25 btn-lg">Back to Detail</a>
+        <input type="submit" value="Edit" class="btn btn-warning w-75 btn-lg">
+    </div>
 </form>
 {% endblock %}

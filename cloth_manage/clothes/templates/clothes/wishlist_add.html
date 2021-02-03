@@ -3,13 +3,50 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-info text-center">Add WishtList</h1>
+<h1 class="display-1 text-info text-center">Add WishtList</h1>
 {% endblock %}
 
 {% block content %}
-<form enctype="multipart/form-data" action="{% url 'wishlist_add' %}" method="POST">
+<form class="form-group" enctype="multipart/form-data" action="{% url 'wishlist_add' %}" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div class="form-control-lg">
+        {{ form.wanted_cloth_name.label_tag }}
+        <br>
+        {{ form.wanted_cloth_name }}
+    </div>
+    <br><br>
+    <div class="form-control-lg">
+        {{ form.wanted_brand_name.label_tag }}
+        <br>
+        {{ form.wanted_brand_name }}
+    </div>
+    <br><br>
+    <div class="form-control-lg">
+        {{ form.wanted_season.label_tag }}
+        <br>
+        {{ form.wanted_season }}
+    </div>
+    <br><br>
+    <div class="form-control-lg">
+        {{ form.wanted_price.label_tag }}
+        <br>
+        {{ form.wanted_price }}
+    </div>
+    <br><br>
+    <div class="form-control-lg">
+        {{ form.priority.label_tag }}
+        <br>
+        {{ form.priority }}
+    </div>
+    <br><br>
+    <div class="form-group">
+        <div class="form-control-lg">
+            {{ form.wanted_images.label_tag }}
+        </div>
+        <div class="btn btn-lg">
+            {{ form.wanted_images }}
+        </div>
+    </div>
     <input type="submit" value="Add" class="btn btn-info w-100">
 </form>
 {% endblock %}

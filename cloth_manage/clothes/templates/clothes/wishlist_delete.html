@@ -3,30 +3,38 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block header %}
-<h1 class="display-2 text-danger text-center">Delete {{obj.wanted_cloth_name}}</h1>
+<h1 class="display-2 text-danger text-center">{{obj.wanted_cloth_name}}の消去</h1>
 {% endblock %}
 
 {% block content %}
-<p class="h2">{{obj.wanted_cloth_name}}</p>
-<img src="{{ MEDIA_URL }}{{obj.wanted_images}}" class="img-fluid">
+<img src="{{ MEDIA_URL }}{{obj.wanted_images}}" class="img-fluid d-block mx-auto">
 <table class="table">
     <tr>
-        <th>ブランド名：{{obj.wanted_brand_name}}</th>
+        <th class="h2">ブランド名：{{obj.wanted_brand_name}}</th>
     </tr>
     <tr>
-        <th>優先度：{{obj.get_priority_display}}</th>
+        <th class="h2">優先度：
+            {% if obj.priority == 1 %}
+                    <span class="text-danger">{{obj.get_priority_display}}</span>
+                    {% elif obj.priority == 2 %}
+                    <span class="text-warning">{{obj.get_priority_display}}</span>
+                    {% else %}
+                    <span>{{obj.get_priority_display}}</span>
+                    {% endif %}
+        </th>
     </tr>
     <tr>
-        <th>シーズン：{{obj.wanted_season}}</th>
+        <th class="h2">シーズン：{{obj.wanted_season}}</th>
     </tr>
     <tr>
-        <th>予想価格：{{obj.wanted_price}}</th>
+        <th class="h2">予想価格：{{obj.wanted_price}}円</th>
     </tr>
-    <form action="{% url 'wishlist_delete' id %}" method="POST">
-        {% csrf_token %}
-        <tr><th></th><td>
-            <input type="submit" value="Delete" class="btn btn-danger w-100">
-        </td></tr>
-    </form>
 </table>
+<form action="{% url 'wishlist_delete' id %}" method="POST">
+    {% csrf_token %}
+    <div class="btn-group btn-group-lg w-100">
+        <a class="btn btn-secondary btn-lg w-25" href="{% url 'wishlist_detail' id %}">Back to Detail</a>
+        <input type="submit" value="Delete" class="btn btn-danger btn-danger w-75">
+    </div>
+</form>
 {% endblock %}
