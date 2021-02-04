@@ -20,11 +20,11 @@ Close Clothは服をまるで図鑑のように管理することができるア
 ・WishListの情報の削除  
 ・服とWishListの一覧はどちらもページネーション可能。
 ## デモ
-まずは新規登録。  
+まずは新規登録。
 <img width="911" alt="スクリーンショット 2021-02-04 093329" src="https://user-images.githubusercontent.com/73643164/106844998-496b8e80-66ed-11eb-80f6-5d906d8b4d19.png">
 そしてログイン
 <img width="911" alt="first" src="https://user-images.githubusercontent.com/73643164/106845090-86378580-66ed-11eb-8773-adf3f5dbfd13.png">
-トップページではまず服を追加するために、Add new clothを押す。  
+トップページではまず服を追加するために、Add new clothを押す。
 <img width="1052" alt="add" src="https://user-images.githubusercontent.com/73643164/106845255-e9c1b300-66ed-11eb-9cf1-8bfdb0de89d6.png">
 フォームを満たして送信する。日付はカレンダー形式で入力できます。今回は例として[いらすとや](https://www.irasutoya.com/)から画像を引用しています。  
 <img width="1066" alt="post" src="https://user-images.githubusercontent.com/73643164/106845403-386f4d00-66ee-11eb-9fbd-9f719ba71260.png">
