@@ -52,16 +52,19 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="1051" alt="seach3" src="https://user-images.githubusercontent.com/73643164/106846109-951f3780-66ef-11eb-97c8-db4413b2cd84.png">  
 WishListはトップページからWishListのボタンを押すことで移動できます。
 <img width="1052" alt="forwishlist" src="https://user-images.githubusercontent.com/73643164/106846137-a5371700-66ef-11eb-8f28-743b7d7ea9ba.png">  
-WishListも服の追加と同様の手順で追加できます。WishListのトップからWishList addを押します。
+WishListも服の追加と同様の手順で追加できます。WishListのトップからadd WishListを押します。
 <img width="1055" alt="wishlist" src="https://user-images.githubusercontent.com/73643164/106846171-b8e27d80-66ef-11eb-93a0-db1602409673.png">  
 こちらでもフォームを満たしてaddを押します。
 <img width="981" alt="add wishlist" src="https://user-images.githubusercontent.com/73643164/106846233-dca5c380-66ef-11eb-8087-32625ba1205f.png">  
-
+こちらもページネーションが可能です。WishListは優先度順に表示されます。優先度は3段階あり、優先度１は赤色、優先度2は黄色、優先度3は黒色で表示されます。
 <img width="1055" alt="wishlist pagination" src="https://user-images.githubusercontent.com/73643164/106846261-ec250c80-66ef-11eb-838c-6c03705a0ec2.png">  
-
+このように、優先度3は優先度が低いため、次のページに表示されます。また、予想価格の合計を確認することができます。
 <img width="1012" alt="wishlist pagination2" src="https://user-images.githubusercontent.com/73643164/106846295-f5ae7480-66ef-11eb-9051-49a4ebb02d8e.png">  
-
+WishListもdetailボタンを押すことで詳細に飛ぶことができます。
 <img width="1034" alt="wishdetail" src="https://user-images.githubusercontent.com/73643164/106846359-11b21600-66f0-11eb-9523-3e0234b29ec1.png">  
+WishListのdetailも服のdetailとできることは同じです。
+<img width="874" alt="wishlistdetaill" src="https://user-images.githubusercontent.com/73643164/106860290-83e22500-6707-11eb-9f1b-a3b9c76ed9ef.png">
+
 
 
 
