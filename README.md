@@ -52,9 +52,9 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="1051" alt="seach3" src="https://user-images.githubusercontent.com/73643164/106846109-951f3780-66ef-11eb-97c8-db4413b2cd84.png">  
 WishListはトップページからWishListのボタンを押すことで移動できます。
 <img width="1052" alt="forwishlist" src="https://user-images.githubusercontent.com/73643164/106846137-a5371700-66ef-11eb-8f28-743b7d7ea9ba.png">  
-
+WishListも服の追加と同様の手順で追加できます。WishListのトップからWishList addを押します。
 <img width="1055" alt="wishlist" src="https://user-images.githubusercontent.com/73643164/106846171-b8e27d80-66ef-11eb-93a0-db1602409673.png">  
-
+こちらでもフォームを満たしてaddを押します。
 <img width="981" alt="add wishlist" src="https://user-images.githubusercontent.com/73643164/106846233-dca5c380-66ef-11eb-8087-32625ba1205f.png">  
 
 <img width="1055" alt="wishlist pagination" src="https://user-images.githubusercontent.com/73643164/106846261-ec250c80-66ef-11eb-838c-6c03705a0ec2.png">  
