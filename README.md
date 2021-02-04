@@ -38,9 +38,11 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="952" alt="edit" src="https://user-images.githubusercontent.com/73643164/106845787-03172f00-66ef-11eb-9723-b87bcd9490cd.png">  
 編集したい内容をフォーム上に入力し、editのボタンを押すことで内容を変更することができます。押した後は、トップページに戻ります。  
 <img width="1025" alt="foredit" src="https://user-images.githubusercontent.com/73643164/106845809-0f02f100-66ef-11eb-9bfa-7e2958b67db9.png">  
-
+削除をしたい場合は、詳細の画面からdeleteのボタンを押します。
 <img width="952" alt="delete" src="https://user-images.githubusercontent.com/73643164/106845831-1aeeb300-66ef-11eb-91ef-ad2aa1831bfa.png">  
+削除する服の情報を確認し、削除するので問題がなければdeleteのボタンを押します。押した後は、こちらもトップページに戻ります。  
 <img width="977" alt="fordelete" src="https://user-images.githubusercontent.com/73643164/106845855-27730b80-66ef-11eb-9497-7a9d06a8cf6c.png">  
+
 <img width="1052" alt="search" src="https://user-images.githubusercontent.com/73643164/106845901-3bb70880-66ef-11eb-80c5-fb6e79887a8d.png">  
 <img width="998" alt="search1" src="https://user-images.githubusercontent.com/73643164/106845934-483b6100-66ef-11eb-8b59-9577e3944e1c.png">  
 <img width="989" alt="search2" src="https://user-images.githubusercontent.com/73643164/106845951-512c3280-66ef-11eb-9880-f8e08eb35aa4.png">  
