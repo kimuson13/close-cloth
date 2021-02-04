@@ -63,7 +63,9 @@ WishListも服の追加と同様の手順で追加できます。WishListのト�
 WishListもdetailボタンを押すことで詳細に飛ぶことができます。
 <img width="1034" alt="wishdetail" src="https://user-images.githubusercontent.com/73643164/106846359-11b21600-66f0-11eb-9523-3e0234b29ec1.png">  
 WishListのdetailも服のdetailとできることは同じです。
-<img width="707" alt="wishwish" src="https://user-images.githubusercontent.com/73643164/106861635-5d24ee00-6709-11eb-94b3-4f7964290785.png">
+<img width="707" alt="wishwish" src="https://user-images.githubusercontent.com/73643164/106861635-5d24ee00-6709-11eb-94b3-4f7964290785.png">  
+## 注意点
+機能一覧にも書いたが、画像ファイルが1MBを超えるとNginxからエラーがでるのでそれ以下のファイルを送信するようにしてください。
 
 
 
