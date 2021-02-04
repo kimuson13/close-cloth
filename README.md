@@ -48,9 +48,9 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="998" alt="search1" src="https://user-images.githubusercontent.com/73643164/106845934-483b6100-66ef-11eb-8b59-9577e3944e1c.png">  
 まずサンプルとしてブランドをサンプル1とサンプル2を用意してあります。そのため、サンプル1とフォームに入力してみました。結果として3つの情報が返ってきました。このように、そのブランドごとの合計金額を確認することが可能です。また、ここからも詳細に飛ぶことができます。  
 <img width="989" alt="search2" src="https://user-images.githubusercontent.com/73643164/106845951-512c3280-66ef-11eb-9880-f8e08eb35aa4.png">  
-次に、服の種類としてtopsを指定しました。結果として
+次に、服の種類としてtopsを指定しました。結果として4つの情報が返ってきました。ここでも種類ごとの合計金額を確認できます。
 <img width="1051" alt="seach3" src="https://user-images.githubusercontent.com/73643164/106846109-951f3780-66ef-11eb-97c8-db4413b2cd84.png">  
-
+WishListはトップページからWishListのボタンを押すことで移動できます。
 <img width="1052" alt="forwishlist" src="https://user-images.githubusercontent.com/73643164/106846137-a5371700-66ef-11eb-8f28-743b7d7ea9ba.png">  
 
 <img width="1055" alt="wishlist" src="https://user-images.githubusercontent.com/73643164/106846171-b8e27d80-66ef-11eb-93a0-db1602409673.png">  
