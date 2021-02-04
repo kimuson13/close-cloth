@@ -63,7 +63,7 @@ WishListも服の追加と同様の手順で追加できます。WishListのト�
 WishListもdetailボタンを押すことで詳細に飛ぶことができます。
 <img width="1034" alt="wishdetail" src="https://user-images.githubusercontent.com/73643164/106846359-11b21600-66f0-11eb-9523-3e0234b29ec1.png">  
 WishListのdetailも服のdetailとできることは同じです。
-<img width="874" alt="wishlistdetaill" src="https://user-images.githubusercontent.com/73643164/106860290-83e22500-6707-11eb-9f1b-a3b9c76ed9ef.png">
+<img width="707" alt="wishwish" src="https://user-images.githubusercontent.com/73643164/106861635-5d24ee00-6709-11eb-94b3-4f7964290785.png">
 
 
 
