@@ -22,7 +22,7 @@ Close Clothは服をまるで図鑑のように管理することができるア
 ## デモ
 まずは新規登録  
 <img width="911" alt="スクリーンショット 2021-02-04 093329" src="https://user-images.githubusercontent.com/73643164/106844998-496b8e80-66ed-11eb-80f6-5d906d8b4d19.png">  
-そしてログイン  
+そしてログイン。今回はfortestのアカウントでログインしています。  
 <img width="911" alt="first" src="https://user-images.githubusercontent.com/73643164/106845090-86378580-66ed-11eb-8773-adf3f5dbfd13.png">  
 トップページではまず服を追加するために、Add new clothを押す。  
 <img width="1052" alt="add" src="https://user-images.githubusercontent.com/73643164/106845255-e9c1b300-66ed-11eb-9cf1-8bfdb0de89d6.png">  
@@ -42,9 +42,11 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="952" alt="delete" src="https://user-images.githubusercontent.com/73643164/106845831-1aeeb300-66ef-11eb-91ef-ad2aa1831bfa.png">  
 削除する服の情報を確認し、削除するので問題がなければdeleteのボタンを押します。押した後は、こちらもトップページに戻ります。  
 <img width="977" alt="fordelete" src="https://user-images.githubusercontent.com/73643164/106845855-27730b80-66ef-11eb-9497-7a9d06a8cf6c.png">  
-
+服をブランドや購入場所、種類で絞り込むことができます。それをしたいときは、searchボタンを押します。  
 <img width="1052" alt="search" src="https://user-images.githubusercontent.com/73643164/106845901-3bb70880-66ef-11eb-80c5-fb6e79887a8d.png">  
+検索画面では、フォームに検索したい内容を入力し、searchボタンを押します。  
 <img width="998" alt="search1" src="https://user-images.githubusercontent.com/73643164/106845934-483b6100-66ef-11eb-8b59-9577e3944e1c.png">  
+まずサンプルとしてブランドをサンプル1とサンプル2を用意してあります。そのため、サンプル1とフォームに入力してみました。結果として4つの情報が返ってきました。
 <img width="989" alt="search2" src="https://user-images.githubusercontent.com/73643164/106845951-512c3280-66ef-11eb-9880-f8e08eb35aa4.png">  
 <img width="1051" alt="seach3" src="https://user-images.githubusercontent.com/73643164/106846109-951f3780-66ef-11eb-97c8-db4413b2cd84.png">  
 <img width="1052" alt="forwishlist" src="https://user-images.githubusercontent.com/73643164/106846137-a5371700-66ef-11eb-8f28-743b7d7ea9ba.png">  
