@@ -32,7 +32,9 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="989" alt="paginaton2" src="https://user-images.githubusercontent.com/73643164/106845668-c51a0b00-66ee-11eb-967e-f0929febfe4c.png">  
 これらは、購入日時が新しい順に表示されています。
 <img width="1014" alt="pagination2" src="https://user-images.githubusercontent.com/73643164/106845698-d2cf9080-66ee-11eb-8d96-69d21a613674.png">  
+服の詳細や服の編集、削除はdetailから見ることができます。服それぞれにdetailのボタンを押すことで詳細に飛べます。  
 <img width="1052" alt="fordetail" src="https://user-images.githubusercontent.com/73643164/106845743-e975e780-66ee-11eb-90ad-64bd4ffba64e.png">  
+
 <img width="952" alt="edit" src="https://user-images.githubusercontent.com/73643164/106845787-03172f00-66ef-11eb-9723-b87bcd9490cd.png">  
 <img width="1025" alt="foredit" src="https://user-images.githubusercontent.com/73643164/106845809-0f02f100-66ef-11eb-9bfa-7e2958b67db9.png">  
 <img width="952" alt="delete" src="https://user-images.githubusercontent.com/73643164/106845831-1aeeb300-66ef-11eb-91ef-ad2aa1831bfa.png">  
