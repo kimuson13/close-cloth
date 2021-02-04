@@ -19,7 +19,7 @@ Close Clothは服をまるで図鑑のように管理することができるア
 ・WishListの情報の編集  
 ・WishListの情報の削除  
 ・服とWishListの一覧はどちらもページネーション可能。
-## デモ
+## デモ&使い方
 まずは新規登録  
 <img width="911" alt="スクリーンショット 2021-02-04 093329" src="https://user-images.githubusercontent.com/73643164/106844998-496b8e80-66ed-11eb-80f6-5d906d8b4d19.png">  
 そしてログイン。今回はfortestのアカウントでログインしています。  
