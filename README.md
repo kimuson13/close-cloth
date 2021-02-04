@@ -46,14 +46,21 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="1052" alt="search" src="https://user-images.githubusercontent.com/73643164/106845901-3bb70880-66ef-11eb-80c5-fb6e79887a8d.png">  
 検索画面では、フォームに検索したい内容を入力し、searchボタンを押します。  
 <img width="998" alt="search1" src="https://user-images.githubusercontent.com/73643164/106845934-483b6100-66ef-11eb-8b59-9577e3944e1c.png">  
-まずサンプルとしてブランドをサンプル1とサンプル2を用意してあります。そのため、サンプル1とフォームに入力してみました。結果として4つの情報が返ってきました。
+まずサンプルとしてブランドをサンプル1とサンプル2を用意してあります。そのため、サンプル1とフォームに入力してみました。結果として3つの情報が返ってきました。このように、そのブランドごとの合計金額を確認することが可能です。また、ここからも詳細に飛ぶことができます。  
 <img width="989" alt="search2" src="https://user-images.githubusercontent.com/73643164/106845951-512c3280-66ef-11eb-9880-f8e08eb35aa4.png">  
+次に、服の種類としてtopsを指定しました。結果として
 <img width="1051" alt="seach3" src="https://user-images.githubusercontent.com/73643164/106846109-951f3780-66ef-11eb-97c8-db4413b2cd84.png">  
+
 <img width="1052" alt="forwishlist" src="https://user-images.githubusercontent.com/73643164/106846137-a5371700-66ef-11eb-8f28-743b7d7ea9ba.png">  
+
 <img width="1055" alt="wishlist" src="https://user-images.githubusercontent.com/73643164/106846171-b8e27d80-66ef-11eb-93a0-db1602409673.png">  
+
 <img width="981" alt="add wishlist" src="https://user-images.githubusercontent.com/73643164/106846233-dca5c380-66ef-11eb-8087-32625ba1205f.png">  
+
 <img width="1055" alt="wishlist pagination" src="https://user-images.githubusercontent.com/73643164/106846261-ec250c80-66ef-11eb-838c-6c03705a0ec2.png">  
+
 <img width="1012" alt="wishlist pagination2" src="https://user-images.githubusercontent.com/73643164/106846295-f5ae7480-66ef-11eb-9051-49a4ebb02d8e.png">  
+
 <img width="1034" alt="wishdetail" src="https://user-images.githubusercontent.com/73643164/106846359-11b21600-66f0-11eb-9523-3e0234b29ec1.png">  
 
 
