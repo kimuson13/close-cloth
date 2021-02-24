@@ -24,7 +24,7 @@ Close Clothは服をまるで図鑑のように管理することができるア
 <img width="911" alt="スクリーンショット 2021-02-04 093329" src="https://user-images.githubusercontent.com/73643164/106844998-496b8e80-66ed-11eb-80f6-5d906d8b4d19.png">  
 そしてログイン。今回はfortestのアカウントでログインしています。  
 <img width="911" alt="first" src="https://user-images.githubusercontent.com/73643164/106845090-86378580-66ed-11eb-8773-adf3f5dbfd13.png">  
-トップページではまず服を追加するために、Add new clothを押す。  
+トップページではまず服を追加するために、Add new clothを押します。  
 <img width="1052" alt="add" src="https://user-images.githubusercontent.com/73643164/106845255-e9c1b300-66ed-11eb-9cf1-8bfdb0de89d6.png">  
 フォームを満たして送信する。日付はカレンダー形式で入力できます。今回は例として[いらすとや](https://www.irasutoya.com/)から画像を引用しています。   
 <img width="1066" alt="post" src="https://user-images.githubusercontent.com/73643164/106845403-386f4d00-66ee-11eb-9fbd-9f719ba71260.png">  
@@ -65,7 +65,7 @@ WishListもdetailボタンを押すことで詳細に飛ぶことができます
 WishListのdetailも服のdetailとできることは同じです。
 <img width="707" alt="wishwish" src="https://user-images.githubusercontent.com/73643164/106861635-5d24ee00-6709-11eb-94b3-4f7964290785.png">  
 ## 注意点
-機能一覧にも書いたが、画像ファイルが1MBを超えるとNginxからエラーがでるのでそれ以下のファイルを送信するようにしてください。
+機能一覧にも書きましたが、画像ファイルが1MBを超えるとNginxからエラーがでるのでそれ以下のファイルを送信するようにしてください。
 
 
 
